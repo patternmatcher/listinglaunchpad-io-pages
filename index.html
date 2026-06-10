@@ -1,55 +1,601 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Listing Launchpad</title>
-    <meta
-      name="description"
-      content="Listing Launchpad helps property and product teams turn listings into polished launch-ready pages."
-    />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta property="og:title" content="Listing Launchpad" />
-    <meta
-      property="og:description"
-      content="Launch-ready listing pages, built for speed, clarity, and conversion."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://listinglaunchpad.io/" />
-    <link rel="stylesheet" href="/styles.css" />
-  </head>
-  <body>
-    <main class="shell">
-      <section class="hero" aria-labelledby="title">
-        <div class="mark" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <p class="eyebrow">Listing Launchpad</p>
-        <h1 id="title">Launch-ready listings without the drag.</h1>
-        <p class="lede">
-          A focused workspace for turning raw property, product, or service listings into polished pages ready to publish, promote, and measure.
-        </p>
-        <div class="actions">
-          <a href="mailto:hello@listinglaunchpad.io">Contact</a>
-          <span>Coming soon</span>
-        </div>
-      </section>
-      <section class="grid" aria-label="Focus areas">
-        <article>
-          <h2>Prepare</h2>
-          <p>Clean copy, organise media, and shape the story before launch.</p>
-        </article>
-        <article>
-          <h2>Publish</h2>
-          <p>Move from draft to live page with a compact repeatable flow.</p>
-        </article>
-        <article>
-          <h2>Improve</h2>
-          <p>Use launch feedback to sharpen each listing after it goes live.</p>
-        </article>
-      </section>
-    </main>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Listing Launchpad — Property posts from a WhatsApp message</title>
+<meta name="description" content="Listing Launchpad turns WhatsApp notes, photos and voice notes from estate agents into listing copy and ready-to-post content for Facebook and Instagram." />
+<meta name="theme-color" content="#14B8A6" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{--teal:#14b8a6;--teal-deep:#0f766e;--mint:#5eead4;--coral:#fb7185;--amber:#fbbf24;--sun:#fb923c;--ink:#0d2b2b;--mist:#5a7676}
+*{box-sizing:border-box;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Inter",system-ui,sans-serif;color:var(--ink);background:#f6fffd;overflow-x:hidden}
+h1,h2,h3,h4{font-family:"Plus Jakarta Sans",system-ui,sans-serif;margin:0}
+p{margin:0}
+a{text-decoration:none;color:inherit}
+img,svg{display:block}
+
+/* aurora */
+.aurora-field{position:fixed;inset:0;z-index:-2;overflow:hidden;background:linear-gradient(180deg,#f3fffd 0%,#fbfffe 40%,#fff8f4 100%)}
+.aurora-blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;will-change:transform}
+.aurora-1{width:46vw;height:46vw;top:-12vw;left:-8vw;background:radial-gradient(circle at 30% 30%,#5eead4,#14b8a6 60%,transparent 72%);animation:drift1 22s ease-in-out infinite}
+.aurora-2{width:40vw;height:40vw;top:8vw;right:-10vw;background:radial-gradient(circle at 60% 40%,#fda4af,#fb7185 55%,transparent 70%);animation:drift2 26s ease-in-out infinite}
+.aurora-3{width:38vw;height:38vw;bottom:-14vw;left:28vw;background:radial-gradient(circle at 50% 50%,#fcd34d,#fb923c 55%,transparent 72%);opacity:.4;animation:drift3 30s ease-in-out infinite}
+.aurora-grain{position:absolute;inset:0;opacity:.5;background-image:radial-gradient(rgba(13,43,43,.04) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:radial-gradient(circle at 50% 30%,black,transparent 80%);mask-image:radial-gradient(circle at 50% 30%,black,transparent 80%)}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(8vw,6vw) scale(1.12)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7vw,8vw) scale(1.08)}}
+@keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-6vw,-7vw) scale(1.15)}}
+
+/* glass */
+.glass{background:rgba(255,255,255,.55);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);border:1px solid rgba(255,255,255,.7);box-shadow:0 10px 40px -12px rgba(13,43,43,.18),inset 0 1px 0 0 rgba(255,255,255,.6)}
+.glass-strong{background:rgba(255,255,255,.72);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border:1px solid rgba(255,255,255,.85);box-shadow:0 10px 40px -12px rgba(13,43,43,.18)}
+.tint-green{background:linear-gradient(150deg,rgba(45,196,179,.32),rgba(255,255,255,.5))}
+.tint-amber{background:linear-gradient(150deg,rgba(251,191,36,.32),rgba(255,255,255,.5))}
+.tint-teal{background:linear-gradient(150deg,rgba(94,234,212,.35),rgba(255,255,255,.5))}
+.tint-coral{background:linear-gradient(150deg,rgba(251,113,133,.3),rgba(255,255,255,.5))}
+
+.tgrad{background:linear-gradient(110deg,#0f766e,#14b8a6 35%,#fb7185);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tgrad-warm{background:linear-gradient(110deg,#fb923c,#fb7185);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* layout */
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 1.4rem}
+.eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-family:"Plus Jakarta Sans";font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep);background:rgba(20,184,166,.1);padding:.4rem .85rem;border-radius:999px;border:1px solid rgba(20,184,166,.18)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:600;font-family:"Plus Jakarta Sans";border-radius:999px;cursor:pointer;border:none;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,filter .25s}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:linear-gradient(120deg,#14b8a6,#0f766e);color:#fff;box-shadow:0 14px 30px -10px rgba(15,118,110,.6)}
+.btn-primary:hover{filter:brightness(1.05);box-shadow:0 20px 44px -12px rgba(15,118,110,.7)}
+.btn-coral{background:linear-gradient(120deg,#fb7185,#fb923c);color:#fff;box-shadow:0 14px 30px -10px rgba(251,113,133,.55)}
+.btn-coral:hover{filter:brightness(1.05)}
+.btn-ghost{background:rgba(255,255,255,.6);color:var(--ink);border:1px solid rgba(13,43,43,.12);backdrop-filter:blur(10px)}
+.btn-ghost:hover{background:rgba(255,255,255,.9)}
+.btn-outline{background:transparent;color:var(--teal-deep);border:1.5px solid rgba(20,184,166,.4)}
+.btn-outline:hover{background:rgba(20,184,166,.08)}
+.btn-lg{padding:.95rem 1.8rem;font-size:1.02rem}
+.btn-md{padding:.7rem 1.4rem;font-size:.95rem}
+.btn-sm{padding:.55rem 1.1rem;font-size:.9rem}
+.btn-block{width:100%}
+
+/* nav */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:12px 12px 0}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.6rem 1rem;border-radius:999px;transition:.3s}
+.nav-inner.scrolled{background:rgba(255,255,255,.72);backdrop-filter:blur(24px) saturate(160%);border:1px solid rgba(255,255,255,.85);box-shadow:0 10px 40px -12px rgba(13,43,43,.18)}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:"Plus Jakarta Sans";font-weight:800;font-size:1.15rem}
+.brand .mk{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#5eead4,#0f766e);color:#fff;display:grid;place-items:center;box-shadow:0 0 0 1px rgba(20,184,166,.25),0 20px 60px -20px rgba(20,184,166,.55)}
+.nav-links{display:flex;gap:.25rem}
+.nav-links a{padding:.55rem .9rem;border-radius:999px;font-size:.9rem;font-weight:500;color:var(--mist);transition:.2s}
+.nav-links a:hover{color:var(--ink);background:rgba(255,255,255,.6)}
+.burger{display:none;width:40px;height:40px;border-radius:999px;border:none;background:rgba(255,255,255,.6);backdrop-filter:blur(10px);cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px auto;transition:.25s}
+
+/* sections */
+section{position:relative}
+.sec{padding:5rem 0}
+.head{text-align:center;max-width:640px;margin:0 auto 3rem}
+.head h2{font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;letter-spacing:-.02em;margin-top:.8rem}
+.head p{margin-top:1rem;color:var(--mist);font-size:1.1rem}
+
+/* hero */
+.hero{padding-top:8.5rem;text-align:center}
+.hero h1{font-weight:800;font-size:clamp(2.6rem,6vw,4rem);line-height:1.04;letter-spacing:-.025em}
+.hero .lead{margin:1.5rem auto 0;max-width:620px;color:var(--mist);font-size:1.15rem}
+.hero .cta{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+.underline-wrap{position:relative;white-space:nowrap}
+.underline-wrap svg{position:absolute;left:0;bottom:-.5rem;width:100%}
+
+/* marquee */
+.marquee{margin-top:3rem;overflow:hidden;padding:.75rem 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee-track{display:flex;gap:3rem;width:max-content;animation:marq 28s linear infinite}
+.marquee-track span{display:flex;align-items:center;gap:.5rem;font-family:"Plus Jakarta Sans";font-weight:600;font-size:.9rem;color:var(--mist);white-space:nowrap}
+.dot{width:6px;height:6px;border-radius:999px;background:var(--teal)}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* grids */
+.grid{display:grid;gap:1.25rem}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+
+/* tiles */
+.tile{border-radius:2rem;padding:1.5rem;height:100%;transition:transform .3s,box-shadow .3s}
+.tile:hover{transform:translateY(-6px);box-shadow:0 30px 70px -30px rgba(13,43,43,.35)}
+.tile .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
+.tile .emoji{font-size:2.2rem}
+.tile .num{font-family:"Plus Jakarta Sans";font-weight:800;font-size:1.6rem;color:rgba(13,43,43,.15)}
+.tile h3{font-size:1.1rem;margin-bottom:.4rem}
+.tile p{font-size:.9rem;color:var(--mist);line-height:1.55}
+
+/* benefits */
+.ben{border-radius:1.5rem;padding:1.5rem;transition:box-shadow .3s}
+.ben:hover{box-shadow:0 30px 70px -30px rgba(13,43,43,.35)}
+.ben .ic{display:inline-grid;place-items:center;width:48px;height:48px;border-radius:1rem;font-size:1.5rem;box-shadow:0 8px 20px -8px rgba(0,0,0,.2);margin-bottom:1rem}
+.ben h3{font-size:1.1rem;margin-bottom:.35rem}
+.ben p{font-size:.9rem;color:var(--mist);line-height:1.55}
+
+/* pricing */
+.tier{position:relative;border-radius:2rem;padding:1.75rem;height:100%;display:flex;flex-direction:column;transition:transform .3s}
+.tier:hover{transform:translateY(-6px)}
+.tier.feat{box-shadow:0 0 0 1px rgba(20,184,166,.25),0 20px 60px -20px rgba(20,184,166,.55)}
+.tier .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);padding:.25rem .8rem;border-radius:999px;font-family:"Plus Jakarta Sans";font-weight:700;font-size:.75rem;color:#fff;background:linear-gradient(90deg,#14b8a6,#fb7185);box-shadow:0 8px 18px -8px rgba(0,0,0,.3)}
+.tier h3{font-size:1.25rem}
+.tier .who{font-size:.9rem;color:var(--mist);margin:.3rem 0 1.2rem;min-height:38px}
+.tier .price{font-family:"Plus Jakarta Sans";font-weight:800;font-size:1.8rem}
+.tier .pnote{font-size:.85rem;color:var(--mist);margin-bottom:1.2rem}
+.tier ul{list-style:none;padding:0;margin:0 0 1.6rem;flex:1;display:flex;flex-direction:column;gap:.7rem}
+.tier li{display:flex;gap:.6rem;font-size:.9rem;color:rgba(13,43,43,.8)}
+.tier li .ck{margin-top:1px;width:20px;height:20px;border-radius:999px;background:var(--teal);color:#fff;display:grid;place-items:center;flex:none}
+
+/* video */
+.vframe{position:relative;max-width:880px;margin:0 auto;border-radius:2.75rem;padding:.7rem;box-shadow:0 30px 70px -30px rgba(13,43,43,.35)}
+.vframe .inner{position:relative;border-radius:2rem;overflow:hidden;aspect-ratio:16/9;background:var(--ink)}
+.vframe video{width:100%;height:100%;object-fit:cover}
+.vplay{position:absolute;inset:0;display:grid;place-items:center;border:none;background:rgba(13,43,43,.18);cursor:pointer}
+.vplay .ring{width:80px;height:80px;border-radius:999px;background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:0 0 0 1px rgba(20,184,166,.25),0 20px 60px -20px rgba(20,184,166,.55);transition:transform .25s}
+.vplay:hover .ring{transform:scale(1.1)}
+
+/* final cta */
+.cta-card{position:relative;overflow:hidden;border-radius:2.75rem;padding:3.5rem 1.5rem;text-align:center;background:linear-gradient(135deg,#0f766e,#14b8a6 45%,#fb7185 120%);box-shadow:0 30px 70px -30px rgba(13,43,43,.35)}
+.cta-card h2{color:#fff;font-weight:800;font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.1;max-width:640px;margin:0 auto}
+.cta-card .sub{color:rgba(255,255,255,.85);font-size:1.1rem;margin:1rem auto 0;max-width:520px}
+.glow{position:absolute;border-radius:999px;filter:blur(60px)}
+.cta-form{margin:2rem auto 0;max-width:560px;border-radius:2rem;padding:1rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.cta-form input{padding:.8rem 1rem;border-radius:1rem;border:none;background:rgba(255,255,255,.85);outline:none;font-size:.95rem;color:var(--ink)}
+.cta-form input:focus{box-shadow:0 0 0 2px var(--teal)}
+.cta-form .full{grid-column:1/-1}
+.cta-note{margin-top:1rem;color:rgba(255,255,255,.78);font-size:.9rem}
+
+/* footer */
+footer{padding:2.5rem 0}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(13,43,43,.12),transparent);margin-bottom:2.5rem}
+.foot-row{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.foot-nav{display:flex;flex-wrap:wrap;gap:1.25rem;font-size:.9rem;color:var(--mist)}
+.foot-nav a:hover{color:var(--ink)}
+.foot-copy{margin-top:2rem;text-align:center;font-size:.78rem;color:var(--mist)}
+
+/* ===== interactive demo ===== */
+.demo-shell{border-radius:2.75rem;padding:1.5rem;box-shadow:0 30px 70px -30px rgba(13,43,43,.35)}
+.switcher{display:flex;justify-content:center;gap:.5rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.chip{padding:.4rem .9rem;border-radius:999px;font-family:"Plus Jakarta Sans";font-weight:600;font-size:.85rem;cursor:pointer;border:none;color:var(--mist);transition:.2s}
+.chip.on{background:var(--teal-deep);color:#fff;box-shadow:0 8px 18px -8px rgba(0,0,0,.3)}
+.demo-grid{display:grid;grid-template-columns:330px 1fr;gap:1.5rem;align-items:start}
+.phone{margin:0 auto;width:310px}
+.phone .body{position:relative;border-radius:2.4rem;background:var(--ink);padding:10px;box-shadow:0 30px 70px -30px rgba(13,43,43,.35)}
+.phone .notch{position:absolute;left:50%;transform:translateX(-50%);top:10px;width:110px;height:20px;background:var(--ink);border-radius:0 0 16px 16px;z-index:5}
+.phone .screen{border-radius:2rem;overflow:hidden;background:#fff}
+.wa-head{display:flex;align-items:center;gap:.7rem;padding:.8rem 1rem;background:var(--teal-deep);color:#fff}
+.wa-head .av{width:36px;height:36px;border-radius:999px;background:rgba(255,255,255,.2);display:grid;place-items:center}
+.wa-head .nm{font-size:.9rem;font-weight:600}
+.wa-head .st{font-size:.7rem;color:rgba(255,255,255,.7)}
+.wa-bg{background-color:#e5ddd5;background-image:radial-gradient(rgba(0,0,0,.03) 1px,transparent 1px);background-size:16px 16px;padding:.8rem;height:430px;overflow-y:auto;display:flex;flex-direction:column;gap:.55rem;scroll-behavior:smooth}
+.wa-bg::-webkit-scrollbar{width:5px}.wa-bg::-webkit-scrollbar-thumb{background:rgba(13,43,43,.18);border-radius:999px}
+.bub{max-width:86%;background:#fff;border-radius:1rem;border-top-left-radius:.3rem;padding:.55rem .65rem;box-shadow:0 1px 2px rgba(0,0,0,.08);animation:pop .4s both}
+.bub.out{align-self:flex-end;background:#d9fdd3;border-top-left-radius:1rem;border-top-right-radius:.3rem}
+.bub .ph{border-radius:.6rem;overflow:hidden;aspect-ratio:4/3;margin-bottom:.5rem}
+.bub .txt{font-size:.78rem;line-height:1.35;color:rgba(13,43,43,.9)}
+.bub .tm{font-size:.62rem;color:var(--mist);text-align:right;margin-top:.25rem}
+.voice{display:flex;align-items:center;gap:.6rem}
+.voice .pl{width:32px;height:32px;border-radius:999px;background:var(--teal);color:#fff;display:grid;place-items:center;flex:none}
+.wave{display:flex;align-items:center;gap:3px;height:24px;flex:1}
+.wave i{width:3px;border-radius:999px;background:rgba(15,118,110,.7);animation:wv 1s ease-in-out infinite}
+.typing{display:flex;gap:5px;padding:.7rem .9rem}
+.typing i{width:8px;height:8px;border-radius:999px;background:var(--mist);animation:blink 1s infinite}
+.wa-input{display:flex;align-items:center;gap:.5rem;padding:.6rem .7rem;background:#f0f2f5}
+.wa-input .fld{flex:1;background:#fff;border-radius:999px;padding:.5rem .8rem;font-size:.75rem;color:var(--mist)}
+.wa-input .mic{width:32px;height:32px;border-radius:999px;background:var(--teal);color:#fff;display:grid;place-items:center}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes wv{0%,100%{height:7px}50%{height:18px}}
+@keyframes blink{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* output panel */
+.out{min-height:480px}
+.idle{border-radius:2rem;padding:2rem;min-height:480px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.idle .sp{width:64px;height:64px;border-radius:1.25rem;background:linear-gradient(135deg,#5eead4,#0f766e);color:#fff;display:grid;place-items:center;box-shadow:0 0 0 1px rgba(20,184,166,.25),0 20px 60px -20px rgba(20,184,166,.55);margin-bottom:1.25rem;animation:floaty 6s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.idle h3{font-size:1.5rem;margin-bottom:.5rem}
+.idle p{color:var(--mist);max-width:380px;margin-bottom:1.5rem}
+.status{border-radius:1rem;padding:.75rem 1rem;display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.status .ic{width:36px;height:36px;border-radius:.8rem;display:grid;place-items:center;color:#fff;flex:none;background:linear-gradient(135deg,#fb7185,#fb923c)}
+.status.done .ic{background:linear-gradient(135deg,#5eead4,#0f766e)}
+.status .ttl{font-family:"Plus Jakarta Sans";font-weight:600;font-size:.9rem}
+.status .meta{font-size:.78rem;color:var(--mist)}
+.spin{animation:spin 2s linear infinite;display:inline-grid}
+@keyframes spin{to{transform:rotate(360deg)}}
+.card-copy{border-radius:1rem;padding:1.1rem;margin-bottom:1rem}
+.card-copy .lab{display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem}
+.card-copy .small{font-size:.7rem;color:var(--mist);margin-left:auto}
+.copy-text{font-size:.9rem;line-height:1.6;color:rgba(13,43,43,.85)}
+.copy-text span{opacity:0;animation:fadein .25s forwards}
+@keyframes fadein{to{opacity:1}}
+.socials{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.post{background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 10px 40px -12px rgba(13,43,43,.18);animation:rise .5s both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.post .ph{display:flex;align-items:center;gap:.5rem;padding:.7rem}
+.post .pic{aspect-ratio:4/3}
+.post.ig .pic{aspect-ratio:1/1}
+.post .av{width:34px;height:34px;border-radius:999px;display:grid;place-items:center;color:#fff;flex:none}
+.post .nm{font-size:.8rem;font-weight:600}
+.post .meta{font-size:.62rem;color:var(--mist)}
+.post .body{padding:.2rem .7rem .5rem;font-size:.78rem;line-height:1.4;color:rgba(13,43,43,.85)}
+.post .tags{color:var(--teal-deep)}
+.post .row{display:flex;align-items:center;gap:.8rem;padding:.5rem .7rem;color:var(--mist);font-size:.7rem}
+
+/* video -> crm attractor */
+.crm-attractor{display:inline-flex;align-items:center;gap:.6rem;font-family:"Plus Jakarta Sans";font-weight:600;font-size:.95rem;color:var(--teal-deep);background:rgba(255,255,255,.72);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(20,184,166,.3);padding:.7rem 1.3rem;border-radius:999px;box-shadow:0 14px 30px -14px rgba(15,118,110,.45);cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s}
+.crm-attractor:hover{transform:translateY(-2px);box-shadow:0 20px 40px -16px rgba(15,118,110,.55)}
+.crm-attractor .ic{font-size:1.1rem}
+.crm-attractor b{color:#0f766e}
+.crm-attractor .arr{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:999px;background:linear-gradient(120deg,#14b8a6,#0f766e);color:#fff;font-size:.8rem;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+/* ===== CRM record ===== */
+.crm-card{border-radius:1rem;overflow:hidden;animation:rise .5s both}
+.crm-head{display:flex;align-items:center;gap:.75rem;padding:1rem;border-bottom:1px solid rgba(255,255,255,.6)}
+.crm-head .av{width:44px;height:44px;border-radius:.8rem;overflow:hidden;flex:none}
+.crm-head .nm{font-family:"Plus Jakarta Sans";font-weight:700;font-size:.95rem}
+.crm-head .sub{font-size:.72rem;color:var(--mist)}
+.crm-head .new{margin-left:auto;font-family:"Plus Jakarta Sans";font-weight:700;font-size:.7rem;color:var(--teal-deep);background:rgba(20,184,166,.15);border:1px solid rgba(20,184,166,.25);padding:.25rem .6rem;border-radius:999px}
+.pipe{padding:1rem 1rem 0}
+.pipe .lab{font-family:"Plus Jakarta Sans";font-weight:700;font-size:.65rem;letter-spacing:.05em;text-transform:uppercase;color:var(--mist);margin-bottom:.5rem}
+.pipe .steps{display:flex;gap:6px}
+.pipe .step{flex:1}
+.pipe .bar{height:6px;border-radius:999px;background:rgba(13,43,43,.1);overflow:hidden}
+.pipe .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#5eead4,#0f766e);transition:width .5s}
+.pipe .step.on .bar i{width:100%}
+.pipe .nm{margin-top:6px;font-size:.62rem;font-weight:500;color:var(--mist)}
+.pipe .step.on .nm{color:var(--teal-deep)}
+.crm-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 1.5rem;padding:.75rem 1rem}
+.frow{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.5rem 0;border-bottom:1px solid rgba(13,43,43,.06);opacity:0;animation:fadein .35s forwards}
+.frow .k{font-size:.78rem;color:var(--mist)}
+.frow .v{font-size:.8rem;font-weight:600;text-align:right}
+.crm-feats{grid-column:1/-1;padding:.6rem 0}
+.crm-feats .k{font-size:.78rem;color:var(--mist);margin-bottom:.4rem}
+.tagpills{display:flex;flex-wrap:wrap;gap:6px}
+.tagpills span{font-size:.72rem;font-weight:500;color:var(--teal-deep);background:rgba(20,184,166,.12);border:1px solid rgba(20,184,166,.2);padding:.25rem .6rem;border-radius:999px}
+.crm-foot{display:flex;align-items:center;gap:.5rem;padding:.75rem 1rem;background:rgba(20,184,166,.1);border-top:1px solid rgba(20,184,166,.15)}
+.crm-foot .ck{width:24px;height:24px;border-radius:999px;background:var(--teal-deep);color:#fff;display:grid;place-items:center;flex:none}
+.crm-foot p{font-size:.78rem;font-weight:500;color:#0f766e}
+
+@media(max-width:900px){
+  .demo-grid{grid-template-columns:1fr}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:1fr}
+  .nav-links,.nav .book{display:none}
+  .burger{display:block}
+  .out{min-height:auto}
+}
+@media(max-width:560px){
+  .g4,.g2,.socials,.cta-form{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .aurora-blob,.marquee-track,.idle .sp,.crm-attractor .arr{animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="aurora-field" aria-hidden="true">
+  <div class="aurora-blob aurora-1"></div><div class="aurora-blob aurora-2"></div>
+  <div class="aurora-blob aurora-3"></div><div class="aurora-grain"></div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner" id="navInner">
+    <a href="#top" class="brand"><span class="mk"><svg viewBox="0 0 32 32" width="20" height="20" fill="currentColor"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.3.6 4.5 1.8 6.5L3 29l7.1-2.1c1.9 1 4 1.6 6 1.6 7 0 12.6-5.6 12.6-12.6S23 3 16 3Zm0 22.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.2 1.2 1.2-4.1-.3-.4a10 10 0 0 1-1.6-5.3c0-5.6 4.6-10.2 10.4-10.2 5.8 0 10.4 4.6 10.4 10.2S21.8 25.8 16 25.8Zm5.7-7.6c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-1.8-.9-3-1.6-4.2-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.4 4.7 2 .9 2.8.9 3.8.8.6-.1 1.8-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4Z"/></svg></span>Listing<span class="tgrad-warm">Launchpad</span></a>
+    <nav class="nav-links">
+      <a href="#how">How it works</a><a href="#demo">Live demo</a>
+      <a href="#video">Watch</a><a href="#crm">CRM</a><a href="#pricing">Pricing</a>
+    </nav>
+    <a href="#book" class="btn btn-primary btn-sm book">Book a pilot</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="top" class="hero wrap">
+  <span class="eyebrow">✦ Hands-free property marketing</span>
+  <h1 style="margin-top:1.2rem">Property posts from a <span class="underline-wrap"><span class="tgrad">WhatsApp message</span><svg viewBox="0 0 300 12" fill="none"><path d="M2 9C70 3 230 3 298 7" stroke="#fb7185" stroke-width="4" stroke-linecap="round"/></svg></span></h1>
+  <p class="lead">Send a note, a few photos, or a voice message. Listing Launchpad turns it into listing copy and ready-to-post content for Facebook and Instagram — waiting for your approval, not your time.</p>
+  <div class="cta">
+    <a href="#book" class="btn btn-primary btn-lg">Book a pilot →</a>
+    <a href="#demo" class="btn btn-ghost btn-lg">See how it works</a>
+  </div>
+</section>
+<div class="marquee"><div class="marquee-track" id="marq"></div></div>
+
+<!-- DEMO -->
+<section id="demo" class="sec">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Try it live</span>
+      <h2>See a property note become a <span class="tgrad">ready-to-post campaign</span></h2>
+      <p>This is the actual workflow. Pick a property, hit generate, and watch it happen — no sign-up needed.</p>
+    </div>
+    <div class="demo-shell glass-strong reveal">
+      <div class="switcher" id="switcher"></div>
+      <div class="demo-grid">
+        <div class="phone"><div class="body"><div class="notch"></div><div class="screen">
+          <div class="wa-head"><div class="av"><svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.3.6 4.5 1.8 6.5L3 29l7.1-2.1c1.9 1 4 1.6 6 1.6 7 0 12.6-5.6 12.6-12.6S23 3 16 3Z"/></svg></div><div><div class="nm">Listing Launchpad</div><div class="st">online</div></div></div>
+          <div class="wa-bg" id="chat"></div>
+          <div class="wa-input"><div class="fld">Message</div><div class="mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3Z"/><path d="M19 11a1 1 0 1 0-2 0 5 5 0 0 1-10 0 1 1 0 1 0-2 0 7 7 0 0 0 6 6.9V20H8a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2h-3v-2.1A7 7 0 0 0 19 11Z"/></svg></div></div>
+        </div></div></div>
+        <div class="out" id="out"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how" class="sec">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">How it works</span><h2>From a quick message to a published campaign</h2><p>Four steps. The first one is the only one you have to do.</p></div>
+    <div class="grid g4" id="steps"></div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Why agents love it</span><h2>Less admin, faster launches, consistent branding</h2></div>
+    <div class="grid g3" id="bens"></div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video" class="sec">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Watch</span><h2>A property note become a ready-to-post campaign</h2><p>A real workflow, start to finish — note in, campaign out.</p></div>
+    <figure class="vframe glass-strong reveal" style="margin:0 auto">
+      <div class="inner">
+        <video id="vid" poster="assets/video-poster.webp" preload="none" playsinline loop muted><source src="assets/hero-video.mp4" type="video/mp4"></video>
+        <button class="vplay" id="vplay" aria-label="Play"><span class="ring"><svg width="34" height="34" viewBox="0 0 24 24" fill="#0f766e"><path d="M8 5v14l11-7z"/></svg></span></button>
+      </div>
+    </figure>
+    <div style="text-align:center;margin-top:1.75rem">
+      <a href="#crm" class="crm-attractor">
+        <span class="ic">📇</span>
+        <span>Posts not all it does — it also fills out your <b>CRM</b></span>
+        <span class="arr">↓</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CRM -->
+<section id="crm" class="sec">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Beyond social</span>
+      <h2>The same note also fills out your <span class="tgrad">CRM</span></h2>
+      <p>One WhatsApp message, two jobs done. While the posts are drafted, the property record is created and your pipeline moves forward — no forms, no copy-paste.</p>
+    </div>
+    <div class="demo-shell glass-strong reveal">
+      <div class="switcher" id="crmSwitcher"></div>
+      <div class="demo-grid">
+        <div class="phone"><div class="body"><div class="notch"></div><div class="screen">
+          <div class="wa-head"><div class="av"><svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.3.6 4.5 1.8 6.5L3 29l7.1-2.1c1.9 1 4 1.6 6 1.6 7 0 12.6-5.6 12.6-12.6S23 3 16 3Z"/></svg></div><div><div class="nm">Listing Launchpad</div><div class="st">online</div></div></div>
+          <div class="wa-bg" id="crmChat"></div>
+          <div class="wa-input"><div class="fld">Message</div><div class="mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3Z"/><path d="M19 11a1 1 0 1 0-2 0 5 5 0 0 1-10 0 1 1 0 1 0-2 0 7 7 0 0 0 6 6.9V20H8a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2h-3v-2.1A7 7 0 0 0 19 11Z"/></svg></div></div>
+        </div></div></div>
+        <div class="out" id="crmOut"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="sec">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Pricing</span><h2>Start small, scale across branches</h2><p>Pilot pricing available — pick the tier that fits your team today.</p></div>
+    <div class="grid g3" id="tiers" style="align-items:stretch"></div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="book" class="sec">
+  <div class="wrap">
+    <div class="cta-card reveal">
+      <div class="glow" style="top:-90px;right:-60px;width:280px;height:280px;background:rgba(255,255,255,.15)"></div>
+      <div class="glow" style="bottom:-90px;left:-60px;width:280px;height:280px;background:rgba(252,211,77,.25)"></div>
+      <div style="position:relative">
+        <h2>Launch your first WhatsApp-to-post workflow</h2>
+        <p class="sub">Book a pilot and see your next listing go from a message to publish-ready in minutes.</p>
+        <form class="cta-form glass-strong" id="leadForm">
+          <input required name="name" placeholder="Your name" aria-label="Your name">
+          <input required type="email" name="email" placeholder="Work email" aria-label="Work email">
+          <input class="full" name="agency" placeholder="Agency / branch (optional)" aria-label="Agency or branch">
+          <button class="btn btn-coral btn-lg full" type="submit">Book a pilot →</button>
+        </form>
+        <p class="cta-note">No commitment — we'll set up your pilot and walk you through it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <div class="divider"></div>
+  <div class="foot-row">
+    <a href="#top" class="brand"><span class="mk"><svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.3.6 4.5 1.8 6.5L3 29l7.1-2.1c1.9 1 4 1.6 6 1.6 7 0 12.6-5.6 12.6-12.6S23 3 16 3Z"/></svg></span>Listing<span class="tgrad-warm">Launchpad</span></a>
+    <nav class="foot-nav"><a href="#how">How it works</a><a href="#demo">Live demo</a><a href="#pricing">Pricing</a><a href="#video">Watch</a><a href="#book">Book a pilot</a></nav>
+  </div>
+  <p class="foot-copy">Hands-free property marketing for busy estate agents. © <span id="yr"></span> Listing Launchpad. All rights reserved.</p>
+</footer>
+
+<script>
+/* ---------- data ---------- */
+const PROPS=[
+ {id:"willow",loc:"Willow Drive, Harrogate",price:"£625,000",beds:4,baths:2,pal:{sky:["#cdf6ee","#effcf9"],wall:"#fff",roof:"#0f766e",accent:"#14b8a6"},
+  note:"New instruction — 4 bed detached, Willow Drive. Big open-plan kitchen, south garden, new boiler. £625k. Pics attached 📸",voice:"0:14",
+  listing:"Tucked away on sought-after Willow Drive, this beautifully presented four-bedroom detached home is built for modern family life. The showpiece open-plan kitchen-diner flows out to a sunny south-facing garden, while a recently fitted boiler means you can move straight in.",
+  fb:"✨ JUST LISTED on Willow Drive ✨ A 4-bed detached with a stunning open-plan kitchen and south-facing garden. Move-in ready. Book your viewing today!",
+  ig:"New on the market 🔑 Open-plan living, south garden, sunshine all day. Swipe to fall in love. DM to view 👀",tags:"#Harrogate #NewListing #DreamHome",
+  ref:"LL-2041",ptype:"Detached house",vendor:"Sarah & Tom Whitfield",vphone:"07700 900 412",feats:["Open-plan kitchen-diner","South-facing garden","New boiler fitted"]},
+ {id:"marsh",loc:"Marsh Lane, Leeds",price:"£340,000",beds:2,baths:2,pal:{sky:["#ffe4e6","#fff1f2"],wall:"#fffdfc",roof:"#9f1239",accent:"#fb7185"},
+  note:"Voice note: 2 bed city apartment, Marsh Lane. 6th floor, balcony with skyline view, secure parking, concierge. Asking £340k 🔑",voice:"0:21",
+  listing:"Rise above the city in this stylish two-bedroom sixth-floor apartment on Marsh Lane. Floor-to-ceiling glass opens onto a private balcony with sweeping skyline views, and residents enjoy secure parking plus a 24-hour concierge.",
+  fb:"🌆 City living, sorted. A 2-bed 6th-floor apartment with skyline balcony views, secure parking and concierge on Marsh Lane. Tap to arrange a viewing 👇",
+  ig:"That balcony though 🌇 2 beds, skyline views, concierge downstairs. Save this one + DM to view 💌",tags:"#LeedsLiving #CityApartment #JustListed",
+  ref:"LL-2042",ptype:"Apartment",vendor:"Daniel Osei",vphone:"07700 900 187",feats:["6th-floor balcony","Secure parking","24-hour concierge"]},
+ {id:"oak",loc:"Oak End, Otley",price:"£450,000",beds:3,baths:1,pal:{sky:["#fef3c7","#fffbeb"],wall:"#fff",roof:"#b45309",accent:"#fb923c"},
+  note:"Quick one — charming 3 bed cottage, Oak End. Wood burner, exposed beams, cottage garden, off-street parking. Guide £450k 🌳",voice:"0:17",
+  listing:"Full of warmth and character, this enchanting three-bedroom cottage on Oak End pairs original exposed beams with a cosy wood burner at its heart. Outside, a pretty cottage garden and off-street parking complete the picture.",
+  fb:"🌳 Cottage goals! A 3-bed charmer on Oak End with a wood burner, exposed beams and a dreamy garden. Viewings this week — message us 🔥",
+  ig:"Beams, a wood burner & a garden made for summer evenings 🌿 Oak End is the cosy escape you've been scrolling for. DM to view ✨",tags:"#CottageCore #Otley #PropertyForSale",
+  ref:"LL-2043",ptype:"Cottage",vendor:"Margaret Hughes",vphone:"07700 900 663",feats:["Wood burner","Exposed beams","Off-street parking"]}
+];
+const PIPELINE=["New instruction","Valuation booked","Photos","Live"];
+
+function house(p,cls){const id=p.roof.replace('#','');return `<svg viewBox="0 0 400 260" class="${cls||''}" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+<defs><linearGradient id="s${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p.sky[0]}"/><stop offset="1" stop-color="${p.sky[1]}"/></linearGradient></defs>
+<rect width="400" height="260" fill="url(#s${id})"/><circle cx="330" cy="55" r="26" fill="${p.accent}" opacity=".25"/><circle cx="330" cy="55" r="16" fill="${p.accent}" opacity=".4"/>
+<path d="M0 200 Q90 150 200 190 T400 175 V260 H0 Z" fill="${p.accent}" opacity=".12"/><rect y="205" width="400" height="55" fill="${p.accent}" opacity=".18"/>
+<rect x="48" y="150" width="7" height="60" rx="3" fill="#0f766e" opacity=".5"/><circle cx="51" cy="145" r="22" fill="${p.accent}" opacity=".55"/>
+<rect x="350" y="158" width="6" height="52" rx="3" fill="#0f766e" opacity=".5"/><circle cx="353" cy="150" r="18" fill="${p.accent}" opacity=".5"/>
+<rect x="118" y="120" width="170" height="100" rx="6" fill="${p.wall}" stroke="rgba(13,43,43,.08)"/><rect x="110" y="110" width="186" height="16" rx="4" fill="${p.roof}"/>
+<rect x="128" y="160" width="56" height="60" rx="4" fill="${p.roof}" opacity=".85"/><rect x="200" y="140" width="74" height="44" rx="3" fill="${p.accent}" opacity=".35"/>
+<line x1="237" y1="140" x2="237" y2="184" stroke="${p.wall}" stroke-width="3"/><line x1="200" y1="162" x2="274" y2="162" stroke="${p.wall}" stroke-width="3"/>
+<rect x="210" y="186" width="26" height="34" rx="2" fill="${p.roof}"/><path d="M223 220 L240 260 H206 Z" fill="${p.wall}" opacity=".8"/></svg>`}
+
+const SPARK='<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2Z"/></svg>';
+const CHECK='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+const FB='<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg>';
+const IG='<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4a3.8 3.8 0 0 1-1.4-.9 3.8 3.8 0 0 1-.9-1.4c-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8Zm0 8a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Zm6.3-8.2a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg>';
+const HEART='<svg width="18" height="18" viewBox="0 0 24 24" fill="#fb7185"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.6 2 5 5.4 5c2 0 3.4 1.1 4.3 2.4C10.6 6.1 12 5 14 5c3.4 0 5 3.6 3.4 6.8C19.5 16.4 12 21 12 21Z"/></svg>';
+const PLAY='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-left:2px"><path d="M8 5v14l11-7z"/></svg>';
+
+/* ---------- static sections ---------- */
+const trust=["Less admin for negotiators","Approve before anything posts","Works inside WhatsApp","Consistent branch content","Listings live in minutes"];
+document.getElementById('marq').innerHTML=[...trust,...trust].map(t=>`<span><span class="dot"></span>${t}</span>`).join('');
+
+const steps=[["01","tint-green","💬","Send a WhatsApp note","Type a few details, snap some photos, or just record a voice note. Whatever's easiest on the move."],
+["02","tint-amber","✨","AI drafts the listing & posts","We turn it into polished listing copy and on-brand social captions, ready for each channel."],
+["03","tint-teal","✅","Approve or request changes","Get a tidy approval message back. Tap to approve, or reply with the tweaks you want."],
+["04","tint-coral","🚀","Publish to social channels","Approved content goes live on Facebook and Instagram — consistent across the branch."]];
+document.getElementById('steps').innerHTML=steps.map(s=>`<div class="reveal"><div class="tile glass ${s[1]}"><div class="top"><span class="emoji">${s[2]}</span><span class="num">${s[0]}</span></div><h3>${s[3]}</h3><p>${s[4]}</p></div></div>`).join('');
+
+const bens=[["⚡","#14b8a6,#0f766e","Less admin for negotiators","No sitting at a dashboard writing posts. Fire off a note and move on to the next viewing."],
+["🚀","#fb7185,#fb923c","Faster listing launches","New instructions go from message to market-ready content in minutes, not days."],
+["🎯","#fbbf24,#fb923c","Consistent branch content","Every post sounds like your brand, across every agent and every channel."],
+["✅","#14b8a6,#0f766e","Approval trail before posting","Nothing goes live without a tap. Keep a clear record of what was approved and when."],
+["💬","#fb7185,#f43f5e","Works from tools you use","It all happens in WhatsApp. No new logins, no training, no change to the routine."],
+["📈","#fbbf24,#fb7185","More posts, less effort","Keep your branch active on social without anyone having to find the time to do it."]];
+document.getElementById('bens').innerHTML=bens.map(b=>`<div class="reveal"><div class="ben glass"><span class="ic" style="background:linear-gradient(135deg,${b[1]})">${b[0]}</span><h3>${b[2]}</h3><p>${b[3]}</p></div></div>`).join('');
+
+const tiers=[["Starter Pilot","For a single negotiator testing the workflow",false,["One agent, one WhatsApp line","Listing copy + social captions","Approval messages before posting","Facebook & Instagram publishing"]],
+["Branch","For a whole office working as one team",true,["Everything in Starter Pilot","Multiple agents, shared branch voice","Consistent branch social content","Approval trail for every post","Priority onboarding & support"]],
+["Multi-Branch","For groups managing several offices",false,["Everything in Branch","Per-branch voice & channels","Group-wide reporting","Centralised approval controls","Dedicated account manager"]]];
+document.getElementById('tiers').innerHTML=tiers.map(t=>`<div class="reveal" style="height:100%"><div class="tier ${t[2]?'glass-strong feat':'glass'}">${t[2]?'<span class="badge">Most popular</span>':''}<h3>${t[0]}</h3><p class="who">${t[1]}</p><div class="price">Pilot pricing</div><div class="pnote">available on request</div><ul>${t[3].map(f=>`<li><span class="ck">${CHECK}</span><span>${f}</span></li>`).join('')}</ul><a href="#book" class="btn ${t[2]?'btn-primary':'btn-outline'} btn-md btn-block">Book a pilot</a></div></div>`).join('');
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---------- nav / scroll / reveal ---------- */
+const navInner=document.getElementById('navInner');
+addEventListener('scroll',()=>navInner.classList.toggle('scrolled',scrollY>24),{passive:true});
+document.getElementById('burger').onclick=()=>{document.querySelector('.nav-links').style.display='flex';document.querySelector('.nav-links').style.cssText='display:flex;position:absolute;top:64px;left:12px;right:12px;flex-direction:column;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border-radius:20px;padding:10px;box-shadow:0 10px 40px -12px rgba(13,43,43,.18)'};
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.18});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* video */
+document.getElementById('vplay').onclick=function(){const v=document.getElementById('vid');v.play();v.setAttribute('controls','');this.style.display='none'};
+document.getElementById('leadForm').onsubmit=function(e){e.preventDefault();
+  /* TODO connect lead capture: Calendly / Formspree / wa.me */
+  this.innerHTML='<div class="full" style="display:flex;align-items:center;gap:12px;justify-content:center;color:#0d2b2b;background:rgba(255,255,255,.9);padding:14px;border-radius:16px"><span style="width:34px;height:34px;border-radius:999px;background:#0f766e;color:#fff;display:grid;place-items:center">'+CHECK+'</span><b>You&rsquo;re on the list! We&rsquo;ll be in touch to set up your pilot.</b></div>'};
+
+/* ---------- interactive demo ---------- */
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let cur=0,timers=[];
+const chat=document.getElementById('chat'),out=document.getElementById('out'),sw=document.getElementById('switcher');
+sw.innerHTML=PROPS.map((p,i)=>`<button class="chip" data-i="${i}">${p.loc.split(',')[0]}</button>`).join('');
+sw.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{select(+c.dataset.i)});
+function clearT(){timers.forEach(clearTimeout);timers=[]}
+function wave(active){let s='';for(let i=0;i<24;i++){s+=`<i style="height:${7+(i*7)%14}px;animation-delay:${(i%6)*0.08}s;${active?'':'animation:none'}"></i>`}return s}
+function renderChat(p,stage){
+  let h=`<div class="bub"><div class="ph">${house(p.pal)}</div><div class="txt">${p.note}</div><div class="tm">9:41 am</div></div>
+  <div class="bub voice"><span class="pl">${PLAY}</span><span class="wave">${wave(stage==='idle')}</span><span style="font-size:.6rem;color:var(--mist)">${p.voice}</span></div>`;
+  if(stage==='thinking')h+=`<div class="bub typing"><i></i><i style="animation-delay:.2s"></i><i style="animation-delay:.4s"></i></div>`;
+  if(stage==='posting'||stage==='done')h+=`<div class="bub"><div class="txt"><b style="color:var(--teal-deep)">✦ Ready to approve</b><br>Your Facebook &amp; Instagram posts are drafted. Reply <b>YES</b> to publish, or tell me what to change.</div></div>`;
+  if(stage==='done')h+=`<div class="bub out"><div class="txt">YES — publish ✅</div><div class="tm">9:42 am ✓✓</div></div>`;
+  chat.innerHTML=h;
+  requestAnimationFrame(()=>{chat.scrollTop=chat.scrollHeight});
+}
+function idle(p){out.innerHTML=`<div class="idle glass"><div class="sp">${SPARK}</div><h3>Watch the magic happen</h3><p>That's the whole input on the left — a quick note, a photo, a voice message. Hit the button and watch it become publish-ready content.</p><button class="btn btn-primary btn-lg" id="gen">${SPARK} Generate the posts</button><p style="font-size:.78rem;color:var(--mist);margin-top:1rem">No sign-up · instant preview</p></div>`;
+  document.getElementById('gen').onclick=run;}
+function copySpans(t){return t.split(' ').map((w,i)=>`<span style="animation-delay:${i*0.025}s">${w} </span>`).join('')}
+function render(p,stage){
+  renderChat(p,stage);
+  if(stage==='idle'){idle(p);return}
+  const done=stage==='done';
+  let h=`<div class="status glass ${done?'done':''}"><span class="ic">${done?CHECK:'<span class="spin">'+SPARK+'</span>'}</span><div style="flex:1"><div class="ttl">${stage==='thinking'?'Reading the note, photo &amp; voice message…':stage==='writing'?'Writing your listing copy…':stage==='posting'?'Designing the social posts…':'Published to Facebook &amp; Instagram'}</div><div class="meta">${p.price} · ${p.loc}</div></div>${done?'<button class="btn btn-ghost btn-sm" id="replay">Replay</button>':''}</div>`;
+  if(stage!=='thinking'){
+    h+=`<div class="card-copy glass"><div class="lab"><span class="eyebrow" style="padding:.2rem .55rem;font-size:.62rem">Listing description</span><span class="small">${p.beds} bed · ${p.baths} bath</span></div><p class="copy-text">${reduced?p.listing:copySpans(p.listing)}</p></div>`;
+  }
+  if(stage==='posting'||stage==='done'){
+    h+=`<div class="socials">
+      <div class="post" style="animation-delay:0s"><div class="ph"><span class="av" style="background:#1877F2">${FB}</span><div><div class="nm">Your Agency</div><div class="meta">Sponsored · 🌐</div></div></div><div class="body">${p.fb}</div><div class="pic">${house(p.pal)}</div><div class="row"><span>👍 ❤️ 128</span><span>24 comments · 12 shares</span></div></div>
+      <div class="post ig" style="animation-delay:.18s"><div class="ph"><span class="av" style="background:linear-gradient(45deg,#fbbf24,#fb7185,#c026d3)">${IG}</span><div class="nm">youragency</div><span style="margin-left:auto;color:var(--mist)">···</span></div><div class="pic">${house(p.pal)}</div><div class="row">${HEART}<span>2,481 likes</span></div><div class="body">${p.ig} <span class="tags">${p.tags}</span></div></div>
+    </div>`;
+  }
+  out.innerHTML=h;
+  const rp=document.getElementById('replay');if(rp)rp.onclick=()=>select(cur);
+}
+function run(){clearT();const p=PROPS[cur];render(p,'thinking');
+  timers.push(setTimeout(()=>render(p,'writing'),reduced?150:1200));
+  timers.push(setTimeout(()=>render(p,'posting'),reduced?400:3400));
+  timers.push(setTimeout(()=>render(p,'done'),reduced?700:5200));}
+function select(i){clearT();cur=i;sw.querySelectorAll('.chip').forEach((c,j)=>c.classList.toggle('on',j===i));render(PROPS[i],'idle')}
+select(0);
+
+/* ---------- CRM demo ---------- */
+const DB='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>';
+let ccur=0,ctimers=[];
+const cChat=document.getElementById('crmChat'),cOut=document.getElementById('crmOut'),cSw=document.getElementById('crmSwitcher');
+cSw.innerHTML=PROPS.map((p,i)=>`<button class="chip" data-i="${i}">${p.loc.split(',')[0]}</button>`).join('');
+cSw.querySelectorAll('.chip').forEach(c=>c.onclick=()=>cselect(+c.dataset.i));
+function cclearT(){ctimers.forEach(clearTimeout);ctimers=[]}
+function crmChatRender(p,stage){
+  let h=`<div class="bub"><div class="ph">${house(p.pal)}</div><div class="txt">${p.note}</div><div class="tm">9:41 am</div></div>
+  <div class="bub voice"><span class="pl">${PLAY}</span><span class="wave">${wave(stage==='idle')}</span><span style="font-size:.6rem;color:var(--mist)">${p.voice}</span></div>`;
+  if(stage==='thinking')h+=`<div class="bub typing"><i></i><i style="animation-delay:.2s"></i><i style="animation-delay:.4s"></i></div>`;
+  if(stage==='done')h+=`<div class="bub"><div class="txt"><b style="color:var(--teal-deep)">✦ Saved to your CRM</b><br>Record <b>${p.ref}</b> created and your pipeline updated. No double entry.</div></div>`;
+  cChat.innerHTML=h;
+  requestAnimationFrame(()=>{cChat.scrollTop=cChat.scrollHeight});
+}
+function cidle(p){cOut.innerHTML=`<div class="idle glass"><div class="sp">${DB}</div><h3>Watch your CRM fill itself</h3><p>The very same note. This time it creates the property record and moves your pipeline along — no forms, no copy-paste.</p><button class="btn btn-primary btn-lg" id="cgen">${SPARK} Create the record</button><p style="font-size:.78rem;color:var(--mist);margin-top:1rem">No sign-up · instant preview</p></div>`;
+  document.getElementById('cgen').onclick=crun;}
+function crender(p,stage){
+  crmChatRender(p,stage);
+  if(stage==='idle'){cidle(p);return}
+  const done=stage==='done',activeStage=done?1:0;
+  let h=`<div class="status glass ${done?'done':''}"><span class="ic">${done?CHECK:'<span class="spin">'+SPARK+'</span>'}</span><div style="flex:1"><div class="ttl">${stage==='thinking'?'Reading the note, photo &amp; voice message…':stage==='filling'?'Creating the property record…':'Synced to your CRM'}</div><div class="meta">${p.loc}</div></div>${done?'<button class="btn btn-ghost btn-sm" id="creplay">Replay</button>':''}</div>`;
+  if(stage==='filling'||stage==='done'){
+    const fields=[["Reference",p.ref],["Property type",p.ptype],["Asking price",p.price],["Bedrooms",p.beds],["Bathrooms",p.baths],["Vendor",p.vendor],["Vendor contact",p.vphone]];
+    h+=`<div class="crm-card glass">
+      <div class="crm-head"><span class="av">${house(p.pal)}</span><div style="min-width:0"><div class="nm">${p.loc}</div><div class="sub">Property record · ${p.ref}</div></div><span class="new">New</span></div>
+      <div class="pipe"><div class="lab">Pipeline</div><div class="steps">${PIPELINE.map((s,i)=>`<div class="step ${i<=activeStage?'on':''}"><div class="bar"><i style="transition-delay:${i*0.15}s"></i></div><div class="nm">${s}</div></div>`).join('')}</div></div>
+      <div class="crm-fields">${fields.map((f,i)=>`<div class="frow" style="animation-delay:${i*0.1}s"><span class="k">${f[0]}</span><span class="v">${f[1]}</span></div>`).join('')}
+        <div class="crm-feats frow" style="animation-delay:${fields.length*0.1}s;border:none"><div style="width:100%"><div class="k">Key features</div><div class="tagpills">${p.feats.map(x=>`<span>${x}</span>`).join('')}</div></div></div>
+      </div>
+      ${done?`<div class="crm-foot"><span class="ck">${CHECK}</span><p>Saved &amp; synced · ${p.ref} added to your pipeline</p></div>`:''}
+    </div>`;
+  }
+  cOut.innerHTML=h;
+  const rp=document.getElementById('creplay');if(rp)rp.onclick=()=>cselect(ccur);
+}
+function crun(){cclearT();const p=PROPS[ccur];crender(p,'thinking');
+  ctimers.push(setTimeout(()=>crender(p,'filling'),reduced?150:1100));
+  ctimers.push(setTimeout(()=>crender(p,'done'),reduced?500:3600));}
+function cselect(i){cclearT();ccur=i;cSw.querySelectorAll('.chip').forEach((c,j)=>c.classList.toggle('on',j===i));crender(PROPS[i],'idle')}
+cselect(0);
+</script>
+</body>
 </html>
