@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Listing Launchpad — Property posts from a WhatsApp message</title>
+<title>Listing Launchpad | Your CRM and socials from one WhatsApp note</title>
 <meta name="description" content="Listing Launchpad turns WhatsApp notes, photos and voice notes from estate agents into listing copy and ready-to-post content for Facebook and Instagram." />
 <meta name="theme-color" content="#14B8A6" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -274,11 +274,64 @@ footer{padding:2.5rem 0}
 }
 @media(max-width:560px){
   .g4,.g2,.socials,.cta-form{grid-template-columns:1fr}
+  .hero{padding-top:7rem}
+  .hero h1{font-size:clamp(2rem,9vw,2.45rem);line-height:1.08}
+  .hero .lead{font-size:1.03rem}
+  .cur{display:none}
 }
 @media(prefers-reduced-motion:reduce){
   .aurora-blob,.marquee-track,.idle .sp,.crm-attractor .arr{animation:none!important}
   html{scroll-behavior:auto}
 }
+
+/* currency selector */
+.cur{position:relative}
+.cur-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .7rem;border-radius:999px;border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.55);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);font-family:"Plus Jakarta Sans";font-weight:600;font-size:.85rem;cursor:pointer;color:var(--ink)}
+.cur-btn:hover{background:rgba(255,255,255,.85)}
+.fl{display:inline-flex;width:20px;height:14px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.12);line-height:0;flex:none}
+.cur-btn .ch{transition:transform .2s}
+.cur.open .cur-btn .ch{transform:rotate(180deg)}
+.cur-menu{position:absolute;right:0;margin-top:.5rem;width:11rem;background:rgba(255,255,255,.78);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border:1px solid rgba(255,255,255,.85);border-radius:1rem;padding:.4rem;box-shadow:0 10px 40px -12px rgba(13,43,43,.18);display:none;z-index:60}
+.cur.open .cur-menu{display:block}
+.cur-menu button{width:100%;display:flex;align-items:center;gap:.6rem;padding:.5rem .7rem;border:none;background:none;border-radius:.7rem;font-family:"Plus Jakarta Sans";font-weight:600;font-size:.85rem;color:rgba(13,43,43,.8);cursor:pointer}
+.cur-menu button:hover{background:rgba(255,255,255,.75)}
+.cur-menu button.on{background:rgba(20,184,166,.15);color:var(--teal-deep)}
+.cur-menu button .pr{margin-left:auto;color:var(--mist);font-size:.78rem;font-weight:500}
+
+/* unified demo checklist */
+.checks{display:flex;gap:.4rem}
+.chk{display:flex;align-items:center;gap:.3rem;font-size:.7rem;font-weight:500;padding:.25rem .55rem;border-radius:999px;border:1px solid rgba(13,43,43,.1);color:var(--mist);background:rgba(255,255,255,.4)}
+.chk.on{color:var(--teal-deep);background:rgba(20,184,166,.12);border-color:rgba(20,184,166,.25)}
+.chk .b{width:14px;height:14px;border-radius:999px;display:grid;place-items:center;background:rgba(13,43,43,.1);color:#fff}
+.chk.on .b{background:var(--teal-deep)}
+.status{flex-wrap:wrap}
+
+/* pricing two-card */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:880px;margin:0 auto;align-items:stretch}
+.note-center{text-align:center;font-size:.78rem;color:var(--mist);margin-top:1.4rem}
+@media(max-width:760px){.plans{grid-template-columns:1fr}}
+
+/* testimonials */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:680px;margin:0 auto 2.5rem}
+.stat{border-radius:1.5rem;padding:1.1rem;text-align:center}
+.stat .big{font-family:"Plus Jakarta Sans";font-weight:800;font-size:1.5rem}
+.stat .small{font-size:.72rem;color:var(--mist);margin-top:.2rem}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.quote{border-radius:1.5rem;padding:1.5rem;display:flex;flex-direction:column}
+.quote .mark{color:var(--coral);font-family:"Plus Jakarta Sans";font-size:2.2rem;line-height:1;margin-bottom:.2rem}
+.quote blockquote{margin:0;font-size:.95rem;line-height:1.5;color:rgba(13,43,43,.85);flex:1}
+.quote figcaption{margin-top:1rem;font-size:.85rem;color:var(--mist)}
+.quote figcaption b{font-family:"Plus Jakarta Sans";color:var(--ink)}
+/* faq */
+.faq-list{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:.75rem}
+.faq-item{border-radius:1rem;overflow:hidden}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;text-align:left;border:none;background:none;cursor:pointer;font-family:"Plus Jakarta Sans";font-weight:600;font-size:.95rem;color:var(--ink)}
+.faq-ic{flex:none;width:24px;height:24px;border-radius:999px;background:rgba(20,184,166,.15);color:var(--teal-deep);display:grid;place-items:center;transition:transform .25s}
+.faq-item.open .faq-ic{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-item.open .faq-a{max-height:240px}
+.faq-a p{padding:0 1.25rem 1rem;margin:0;font-size:.9rem;color:var(--mist);line-height:1.55}
+@media(max-width:760px){.stats,.quotes{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -291,11 +344,16 @@ footer{padding:2.5rem 0}
   <div class="nav-inner" id="navInner">
     <a href="#top" class="brand"><span class="mk"><svg viewBox="0 0 32 32" width="20" height="20" fill="currentColor"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.3.6 4.5 1.8 6.5L3 29l7.1-2.1c1.9 1 4 1.6 6 1.6 7 0 12.6-5.6 12.6-12.6S23 3 16 3Zm0 22.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.2 1.2 1.2-4.1-.3-.4a10 10 0 0 1-1.6-5.3c0-5.6 4.6-10.2 10.4-10.2 5.8 0 10.4 4.6 10.4 10.2S21.8 25.8 16 25.8Zm5.7-7.6c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-1.8-.9-3-1.6-4.2-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.4 4.7 2 .9 2.8.9 3.8.8.6-.1 1.8-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4Z"/></svg></span>Listing<span class="tgrad-warm">Launchpad</span></a>
     <nav class="nav-links">
-      <a href="#how">How it works</a><a href="#demo">Live demo</a>
-      <a href="#video">Watch</a><a href="#crm">CRM</a><a href="#pricing">Pricing</a>
+      <a href="#demo">Try it</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
     </nav>
-    <a href="#book" class="btn btn-primary btn-sm book">Book a pilot</a>
-    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div style="display:flex;align-items:center;gap:.5rem">
+      <div class="cur" id="cur">
+        <button class="cur-btn" id="curBtn" aria-label="Change currency" aria-expanded="false"><span class="fl" id="curFlag"></span><span id="curCode">GBP</span><svg class="ch" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="cur-menu" id="curMenu"></div>
+      </div>
+      <a href="#pricing" class="btn btn-primary btn-sm book">Get started</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -303,22 +361,22 @@ footer{padding:2.5rem 0}
 <!-- HERO -->
 <section id="top" class="hero wrap">
   <span class="eyebrow">✦ Hands-free property marketing</span>
-  <h1 style="margin-top:1.2rem">Property posts from a <span class="underline-wrap"><span class="tgrad">WhatsApp message</span><svg viewBox="0 0 300 12" fill="none"><path d="M2 9C70 3 230 3 298 7" stroke="#fb7185" stroke-width="4" stroke-linecap="round"/></svg></span></h1>
-  <p class="lead">Send a note, a few photos, or a voice message. Listing Launchpad turns it into listing copy and ready-to-post content for Facebook and Instagram — waiting for your approval, not your time.</p>
+  <h1 style="margin-top:1.2rem">Your CRM and socials, sorted from <span class="underline-wrap"><span class="tgrad">one WhatsApp note</span><svg viewBox="0 0 300 12" fill="none"><path d="M2 9C70 3 230 3 298 7" stroke="#fb7185" stroke-width="4" stroke-linecap="round"/></svg></span></h1>
+  <p class="lead">Send a note, a few photos, or a quick voice message. Listing Launchpad writes your Facebook and Instagram posts and updates your CRM for you. All you do is glance and say yes.</p>
   <div class="cta">
-    <a href="#book" class="btn btn-primary btn-lg">Book a pilot →</a>
-    <a href="#demo" class="btn btn-ghost btn-lg">See how it works</a>
+    <a href="#pricing" class="btn btn-primary btn-lg">Get started</a>
+    <a href="#demo" class="btn btn-ghost btn-lg">See it work</a>
   </div>
 </section>
 <div class="marquee"><div class="marquee-track" id="marq"></div></div>
 
-<!-- DEMO -->
+<!-- UNIFIED DEMO -->
 <section id="demo" class="sec">
   <div class="wrap">
     <div class="head">
-      <span class="eyebrow">Try it live</span>
-      <h2>See a property note become a <span class="tgrad">ready-to-post campaign</span></h2>
-      <p>This is the actual workflow. Pick a property, hit generate, and watch it happen — no sign-up needed.</p>
+      <span class="eyebrow">Try it yourself</span>
+      <h2>One note writes your posts and updates your <span class="tgrad">CRM</span></h2>
+      <p>Watch it happen in real time. Pick a property, hit generate, and the posts get written while the record fills. Both at once.</p>
     </div>
     <div class="demo-shell glass-strong reveal">
       <div class="switcher" id="switcher"></div>
@@ -337,57 +395,46 @@ footer{padding:2.5rem 0}
 <!-- HOW -->
 <section id="how" class="sec">
   <div class="wrap">
-    <div class="head"><span class="eyebrow">How it works</span><h2>From a quick message to a published campaign</h2><p>Four steps. The first one is the only one you have to do.</p></div>
+    <div class="head"><span class="eyebrow">How it works</span><h2>From a quick message to a finished listing</h2><p>Four steps. You only do the first one.</p></div>
     <div class="grid g4" id="steps"></div>
-  </div>
-</section>
-
-<!-- BENEFITS -->
-<section class="sec">
-  <div class="wrap">
-    <div class="head"><span class="eyebrow">Why agents love it</span><h2>Less admin, faster launches, consistent branding</h2></div>
-    <div class="grid g3" id="bens"></div>
   </div>
 </section>
 
 <!-- VIDEO -->
 <section id="video" class="sec">
   <div class="wrap">
-    <div class="head"><span class="eyebrow">Watch</span><h2>A property note become a ready-to-post campaign</h2><p>A real workflow, start to finish — note in, campaign out.</p></div>
+    <div class="head"><span class="eyebrow">Watch</span><h2>Watch an agent run a whole listing from WhatsApp</h2><p>Note in, posts out, CRM updated. The whole thing takes a couple of minutes.</p></div>
     <figure class="vframe glass-strong reveal" style="margin:0 auto">
       <div class="inner">
         <video id="vid" poster="assets/video-poster.webp" preload="none" playsinline loop muted><source src="assets/hero-video.mp4" type="video/mp4"></video>
         <button class="vplay" id="vplay" aria-label="Play"><span class="ring"><svg width="34" height="34" viewBox="0 0 24 24" fill="#0f766e"><path d="M8 5v14l11-7z"/></svg></span></button>
       </div>
     </figure>
-    <div style="text-align:center;margin-top:1.75rem">
-      <a href="#crm" class="crm-attractor">
-        <span class="ic">📇</span>
-        <span>Posts not all it does — it also fills out your <b>CRM</b></span>
-        <span class="arr">↓</span>
-      </a>
-    </div>
   </div>
 </section>
 
-<!-- CRM -->
-<section id="crm" class="sec">
+<!-- BENEFITS -->
+<section class="sec">
   <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Beyond social</span>
-      <h2>The same note also fills out your <span class="tgrad">CRM</span></h2>
-      <p>One WhatsApp message, two jobs done. While the posts are drafted, the property record is created and your pipeline moves forward — no forms, no copy-paste.</p>
+    <div class="head"><span class="eyebrow">Why agents love it</span><h2>Less admin, faster launches, a CRM that keeps itself current</h2></div>
+    <div class="grid g3" id="bens"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="loved" class="sec">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Loved by busy branches</span><h2>Built for agents who would rather be selling</h2></div>
+    <!-- PLACEHOLDER stats and quotes. Swap for real numbers and named testimonials before launch. -->
+    <div class="stats reveal">
+      <div class="stat glass"><div class="big tgrad">10+ hrs</div><div class="small">saved a week per branch</div></div>
+      <div class="stat glass"><div class="big tgrad">Minutes</div><div class="small">from note to live post</div></div>
+      <div class="stat glass"><div class="big tgrad">Zero</div><div class="small">double data entry</div></div>
     </div>
-    <div class="demo-shell glass-strong reveal">
-      <div class="switcher" id="crmSwitcher"></div>
-      <div class="demo-grid">
-        <div class="phone"><div class="body"><div class="notch"></div><div class="screen">
-          <div class="wa-head"><div class="av"><svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.3.6 4.5 1.8 6.5L3 29l7.1-2.1c1.9 1 4 1.6 6 1.6 7 0 12.6-5.6 12.6-12.6S23 3 16 3Z"/></svg></div><div><div class="nm">Listing Launchpad</div><div class="st">online</div></div></div>
-          <div class="wa-bg" id="crmChat"></div>
-          <div class="wa-input"><div class="fld">Message</div><div class="mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3Z"/><path d="M19 11a1 1 0 1 0-2 0 5 5 0 0 1-10 0 1 1 0 1 0-2 0 7 7 0 0 0 6 6.9V20H8a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2h-3v-2.1A7 7 0 0 0 19 11Z"/></svg></div></div>
-        </div></div></div>
-        <div class="out" id="crmOut"></div>
-      </div>
+    <div class="quotes reveal">
+      <figure class="quote glass"><div class="mark">&ldquo;</div><blockquote>I send a voice note from the car and the posts are written before I'm back at the office.</blockquote><figcaption><b>Sales Negotiator</b>, Leeds</figcaption></figure>
+      <figure class="quote glass"><div class="mark">&ldquo;</div><blockquote>Our branch finally posts consistently, and nobody had to learn a new system.</blockquote><figcaption><b>Branch Manager</b>, Harrogate</figcaption></figure>
+      <figure class="quote glass"><div class="mark">&ldquo;</div><blockquote>The CRM updating itself is the part I didn't know I needed. No more Friday data entry.</blockquote><figcaption><b>Director</b>, Otley</figcaption></figure>
     </div>
   </div>
 </section>
@@ -395,8 +442,48 @@ footer{padding:2.5rem 0}
 <!-- PRICING -->
 <section id="pricing" class="sec">
   <div class="wrap">
-    <div class="head"><span class="eyebrow">Pricing</span><h2>Start small, scale across branches</h2><p>Pilot pricing available — pick the tier that fits your team today.</p></div>
-    <div class="grid g3" id="tiers" style="align-items:stretch"></div>
+    <div class="head"><span class="eyebrow">Pricing</span><h2>Two ways to get going</h2><p>Start on your own with Social, or connect your CRM for the full hands-free setup. Prices show in the currency you pick.</p></div>
+    <div class="plans reveal">
+      <div class="tier glass">
+        <h3>Social</h3>
+        <p class="who">Hands-free posting from WhatsApp. You set it up in minutes.</p>
+        <div class="price"><span id="socialPrice">£335</span><span style="font-size:1.1rem;color:var(--mist)">/mo</span></div>
+        <div class="pnote">Self-serve setup</div>
+        <ul>
+          <li><span class="ck">✓</span><span>Listing copy and social captions</span></li>
+          <li><span class="ck">✓</span><span>Posts written for every listing</span></li>
+          <li><span class="ck">✓</span><span>Publishes to Facebook and Instagram</span></li>
+          <li><span class="ck">✓</span><span>Unlimited properties and agents</span></li>
+          <li><span class="ck">✓</span><span>Set up yourself, no call needed</span></li>
+        </ul>
+        <button id="socialCta" class="btn btn-outline btn-md btn-block">Subscribe</button>
+      </div>
+      <div class="tier glass-strong feat">
+        <span class="badge">Enterprise</span>
+        <h3>CRM Connectivity</h3>
+        <p class="who">The full engine. Social posting plus a live, two-way link to your CRM.</p>
+        <div class="price">Let&rsquo;s talk</div>
+        <div class="pnote">Custom pricing, includes a setup call</div>
+        <ul>
+          <li><span class="ck">✓</span><span>Everything in Social</span></li>
+          <li><span class="ck">✓</span><span>Two-way sync with your CRM</span></li>
+          <li><span class="ck">✓</span><span>Property records created for you</span></li>
+          <li><span class="ck">✓</span><span>Pipeline updates itself</span></li>
+          <li><span class="ck">✓</span><span>Per-branch controls and reporting</span></li>
+          <li><span class="ck">✓</span><span>Setup call and a dedicated manager</span></li>
+        </ul>
+        <a href="#book" class="btn btn-primary btn-md btn-block">Book a call</a>
+      </div>
+    </div>
+    <p class="note-center">CRM connectivity is built around your system, so it starts with a quick call rather than a signup.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Questions</span><h2>The things agents usually ask</h2></div>
+    <div class="faq-list" id="faqList"></div>
   </div>
 </section>
 
@@ -407,15 +494,15 @@ footer{padding:2.5rem 0}
       <div class="glow" style="top:-90px;right:-60px;width:280px;height:280px;background:rgba(255,255,255,.15)"></div>
       <div class="glow" style="bottom:-90px;left:-60px;width:280px;height:280px;background:rgba(252,211,77,.25)"></div>
       <div style="position:relative">
-        <h2>Launch your first WhatsApp-to-post workflow</h2>
-        <p class="sub">Book a pilot and see your next listing go from a message to publish-ready in minutes.</p>
+        <h2>Want CRM connectivity? Let&rsquo;s talk.</h2>
+        <p class="sub">Tell us which CRM you use and we&rsquo;ll show you the full hands-free setup on a short call. Just after the Social plan? You can start that yourself from the pricing above.</p>
         <form class="cta-form glass-strong" id="leadForm">
           <input required name="name" placeholder="Your name" aria-label="Your name">
           <input required type="email" name="email" placeholder="Work email" aria-label="Work email">
-          <input class="full" name="agency" placeholder="Agency / branch (optional)" aria-label="Agency or branch">
-          <button class="btn btn-coral btn-lg full" type="submit">Book a pilot →</button>
+          <input class="full" name="crm" placeholder="Which CRM do you use? (optional)" aria-label="Which CRM do you use">
+          <button class="btn btn-coral btn-lg full" type="submit">Book a call</button>
         </form>
-        <p class="cta-note">No commitment — we'll set up your pilot and walk you through it.</p>
+        <p class="cta-note">No hard sell. Just a look at how it would work for your branch.</p>
       </div>
     </div>
   </div>
@@ -426,36 +513,31 @@ footer{padding:2.5rem 0}
   <div class="divider"></div>
   <div class="foot-row">
     <a href="#top" class="brand"><span class="mk"><svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.3.6 4.5 1.8 6.5L3 29l7.1-2.1c1.9 1 4 1.6 6 1.6 7 0 12.6-5.6 12.6-12.6S23 3 16 3Z"/></svg></span>Listing<span class="tgrad-warm">Launchpad</span></a>
-    <nav class="foot-nav"><a href="#how">How it works</a><a href="#demo">Live demo</a><a href="#pricing">Pricing</a><a href="#video">Watch</a><a href="#book">Book a pilot</a></nav>
+    <nav class="foot-nav"><a href="#demo">Try it</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="#book">Contact</a></nav>
   </div>
   <p class="foot-copy">Hands-free property marketing for busy estate agents. © <span id="yr"></span> Listing Launchpad. All rights reserved.</p>
 </footer>
-
 <script>
-/* ---------- data ---------- */
 const PROPS=[
  {id:"willow",loc:"Willow Drive, Harrogate",price:"£625,000",beds:4,baths:2,pal:{sky:["#cdf6ee","#effcf9"],wall:"#fff",roof:"#0f766e",accent:"#14b8a6"},
-  note:"New instruction — 4 bed detached, Willow Drive. Big open-plan kitchen, south garden, new boiler. £625k. Pics attached 📸",voice:"0:14",
-  listing:"Tucked away on sought-after Willow Drive, this beautifully presented four-bedroom detached home is built for modern family life. The showpiece open-plan kitchen-diner flows out to a sunny south-facing garden, while a recently fitted boiler means you can move straight in.",
+  note:"New instruction. 4 bed detached on Willow Drive. Big open-plan kitchen, south garden, new boiler. £625k. Pics attached 📸",voice:"0:14",
   fb:"✨ JUST LISTED on Willow Drive ✨ A 4-bed detached with a stunning open-plan kitchen and south-facing garden. Move-in ready. Book your viewing today!",
   ig:"New on the market 🔑 Open-plan living, south garden, sunshine all day. Swipe to fall in love. DM to view 👀",tags:"#Harrogate #NewListing #DreamHome",
   ref:"LL-2041",ptype:"Detached house",vendor:"Sarah & Tom Whitfield",vphone:"07700 900 412",feats:["Open-plan kitchen-diner","South-facing garden","New boiler fitted"]},
  {id:"marsh",loc:"Marsh Lane, Leeds",price:"£340,000",beds:2,baths:2,pal:{sky:["#ffe4e6","#fff1f2"],wall:"#fffdfc",roof:"#9f1239",accent:"#fb7185"},
   note:"Voice note: 2 bed city apartment, Marsh Lane. 6th floor, balcony with skyline view, secure parking, concierge. Asking £340k 🔑",voice:"0:21",
-  listing:"Rise above the city in this stylish two-bedroom sixth-floor apartment on Marsh Lane. Floor-to-ceiling glass opens onto a private balcony with sweeping skyline views, and residents enjoy secure parking plus a 24-hour concierge.",
   fb:"🌆 City living, sorted. A 2-bed 6th-floor apartment with skyline balcony views, secure parking and concierge on Marsh Lane. Tap to arrange a viewing 👇",
   ig:"That balcony though 🌇 2 beds, skyline views, concierge downstairs. Save this one + DM to view 💌",tags:"#LeedsLiving #CityApartment #JustListed",
   ref:"LL-2042",ptype:"Apartment",vendor:"Daniel Osei",vphone:"07700 900 187",feats:["6th-floor balcony","Secure parking","24-hour concierge"]},
  {id:"oak",loc:"Oak End, Otley",price:"£450,000",beds:3,baths:1,pal:{sky:["#fef3c7","#fffbeb"],wall:"#fff",roof:"#b45309",accent:"#fb923c"},
-  note:"Quick one — charming 3 bed cottage, Oak End. Wood burner, exposed beams, cottage garden, off-street parking. Guide £450k 🌳",voice:"0:17",
-  listing:"Full of warmth and character, this enchanting three-bedroom cottage on Oak End pairs original exposed beams with a cosy wood burner at its heart. Outside, a pretty cottage garden and off-street parking complete the picture.",
-  fb:"🌳 Cottage goals! A 3-bed charmer on Oak End with a wood burner, exposed beams and a dreamy garden. Viewings this week — message us 🔥",
+  note:"Quick one. Charming 3 bed cottage on Oak End. Wood burner, exposed beams, cottage garden, off-street parking. Guide £450k 🌳",voice:"0:17",
+  fb:"🌳 Cottage goals! A 3-bed charmer on Oak End with a wood burner, exposed beams and a dreamy garden. Viewings start this week, message us to book 🔥",
   ig:"Beams, a wood burner & a garden made for summer evenings 🌿 Oak End is the cosy escape you've been scrolling for. DM to view ✨",tags:"#CottageCore #Otley #PropertyForSale",
   ref:"LL-2043",ptype:"Cottage",vendor:"Margaret Hughes",vphone:"07700 900 663",feats:["Wood burner","Exposed beams","Off-street parking"]}
 ];
 const PIPELINE=["New instruction","Valuation booked","Photos","Live"];
 
-function house(p,cls){const id=p.roof.replace('#','');return `<svg viewBox="0 0 400 260" class="${cls||''}" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+function house(p){const id=p.roof.replace('#','');return `<svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
 <defs><linearGradient id="s${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p.sky[0]}"/><stop offset="1" stop-color="${p.sky[1]}"/></linearGradient></defs>
 <rect width="400" height="260" fill="url(#s${id})"/><circle cx="330" cy="55" r="26" fill="${p.accent}" opacity=".25"/><circle cx="330" cy="55" r="16" fill="${p.accent}" opacity=".4"/>
 <path d="M0 200 Q90 150 200 190 T400 175 V260 H0 Z" fill="${p.accent}" opacity=".12"/><rect y="205" width="400" height="55" fill="${p.accent}" opacity=".18"/>
@@ -466,6 +548,14 @@ function house(p,cls){const id=p.roof.replace('#','');return `<svg viewBox="0 0 
 <line x1="237" y1="140" x2="237" y2="184" stroke="${p.wall}" stroke-width="3"/><line x1="200" y1="162" x2="274" y2="162" stroke="${p.wall}" stroke-width="3"/>
 <rect x="210" y="186" width="26" height="34" rx="2" fill="${p.roof}"/><path d="M223 220 L240 260 H206 Z" fill="${p.wall}" opacity=".8"/></svg>`}
 
+function flag(c){var F={
+GBP:'<rect width="24" height="16" fill="#012169"/><path d="M0,0 24,16 M24,0 0,16" stroke="#fff" stroke-width="3.2"/><path d="M0,0 24,16 M24,0 0,16" stroke="#C8102E" stroke-width="1.6"/><rect x="9.5" width="5" height="16" fill="#fff"/><rect y="5.5" width="24" height="5" fill="#fff"/><rect x="10.5" width="3" height="16" fill="#C8102E"/><rect y="6.5" width="24" height="3" fill="#C8102E"/>',
+USD:'<rect width="24" height="16" fill="#B22234"/><g fill="#fff"><rect y="1.23" width="24" height="1.23"/><rect y="3.69" width="24" height="1.23"/><rect y="6.15" width="24" height="1.23"/><rect y="8.61" width="24" height="1.23"/><rect y="11.07" width="24" height="1.23"/><rect y="13.53" width="24" height="1.23"/></g><rect width="10" height="8.6" fill="#3C3B6E"/><g fill="#fff"><circle cx="2" cy="1.6" r="0.5"/><circle cx="4" cy="1.6" r="0.5"/><circle cx="6" cy="1.6" r="0.5"/><circle cx="8" cy="1.6" r="0.5"/><circle cx="3" cy="3.2" r="0.5"/><circle cx="5" cy="3.2" r="0.5"/><circle cx="7" cy="3.2" r="0.5"/><circle cx="2" cy="4.8" r="0.5"/><circle cx="4" cy="4.8" r="0.5"/><circle cx="6" cy="4.8" r="0.5"/><circle cx="8" cy="4.8" r="0.5"/><circle cx="3" cy="6.4" r="0.5"/><circle cx="5" cy="6.4" r="0.5"/><circle cx="7" cy="6.4" r="0.5"/></g>',
+EUR:'<rect width="24" height="16" fill="#003399"/><g fill="#FFCC00"><circle cx="16.8" cy="8" r="0.7"/><circle cx="16.16" cy="5.6" r="0.7"/><circle cx="14.4" cy="3.84" r="0.7"/><circle cx="12" cy="3.2" r="0.7"/><circle cx="9.6" cy="3.84" r="0.7"/><circle cx="7.84" cy="5.6" r="0.7"/><circle cx="7.2" cy="8" r="0.7"/><circle cx="7.84" cy="10.4" r="0.7"/><circle cx="9.6" cy="12.16" r="0.7"/><circle cx="12" cy="12.8" r="0.7"/><circle cx="14.4" cy="12.16" r="0.7"/><circle cx="16.16" cy="10.4" r="0.7"/></g>',
+AUD:'<rect width="24" height="16" fill="#00247D"/><path d="M0,0 10,6.4 M10,0 0,6.4" stroke="#fff" stroke-width="1.4"/><path d="M0,0 10,6.4 M10,0 0,6.4" stroke="#C8102E" stroke-width="0.7"/><rect x="4" width="2" height="6.4" fill="#fff"/><rect y="2.2" width="10" height="2" fill="#fff"/><rect x="4.4" width="1.2" height="6.4" fill="#C8102E"/><rect y="2.6" width="10" height="1.2" fill="#C8102E"/><circle cx="5" cy="11.6" r="1.2" fill="#fff"/><g fill="#fff"><circle cx="18" cy="4" r="0.7"/><circle cx="21" cy="7" r="0.7"/><circle cx="18" cy="10.6" r="0.7"/><circle cx="15.4" cy="7.4" r="0.6"/><circle cx="19" cy="13" r="0.45"/></g>',
+CAD:'<rect width="24" height="16" fill="#fff"/><rect width="6" height="16" fill="#D52B1E"/><rect x="18" width="6" height="16" fill="#D52B1E"/><path d="M12 4 l0.8 1.9 1.9 -0.5 -0.7 1.7 1.6 0.5 -1.5 1.1 0.6 1.1 -2 -0.2 0 2.1 -1 0 0 -2.1 -2 0.2 0.6 -1.1 -1.5 -1.1 1.6 -0.5 -0.7 -1.7 1.9 0.5 z" fill="#D52B1E"/>'
+};return '<svg viewBox="0 0 24 16" width="20" height="14" preserveAspectRatio="none" style="display:block">'+(F[c]||'')+'</svg>';}
+
 const SPARK='<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2Z"/></svg>';
 const CHECK='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
 const FB='<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg>';
@@ -473,129 +563,113 @@ const IG='<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><p
 const HEART='<svg width="18" height="18" viewBox="0 0 24 24" fill="#fb7185"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.6 2 5 5.4 5c2 0 3.4 1.1 4.3 2.4C10.6 6.1 12 5 14 5c3.4 0 5 3.6 3.4 6.8C19.5 16.4 12 21 12 21Z"/></svg>';
 const PLAY='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-left:2px"><path d="M8 5v14l11-7z"/></svg>';
 
-/* ---------- static sections ---------- */
-const trust=["Less admin for negotiators","Approve before anything posts","Works inside WhatsApp","Consistent branch content","Listings live in minutes"];
+const trust=["Posts written for you","Your CRM updates itself","Works inside WhatsApp","Nothing new to learn","No double data entry","Listings live in minutes"];
 document.getElementById('marq').innerHTML=[...trust,...trust].map(t=>`<span><span class="dot"></span>${t}</span>`).join('');
 
-const steps=[["01","tint-green","💬","Send a WhatsApp note","Type a few details, snap some photos, or just record a voice note. Whatever's easiest on the move."],
-["02","tint-amber","✨","AI drafts the listing & posts","We turn it into polished listing copy and on-brand social captions, ready for each channel."],
-["03","tint-teal","✅","Approve or request changes","Get a tidy approval message back. Tap to approve, or reply with the tweaks you want."],
-["04","tint-coral","🚀","Publish to social channels","Approved content goes live on Facebook and Instagram — consistent across the branch."]];
+const steps=[["01","tint-green","💬","Send a WhatsApp note","Type a few details, snap some photos, or record a voice note. Whatever is quickest between viewings."],
+["02","tint-amber","✨","It writes the posts and fills your CRM","Listing Launchpad drafts your listing copy and social captions, and creates the property record. All from that one note."],
+["03","tint-teal","👍","Give it a quick yes","A tidy summary lands back in WhatsApp. Tap yes, or reply with any change you want."],
+["04","tint-coral","🚀","Posted and synced","Your posts go live on Facebook and Instagram, and your CRM stays up to date. No second system to touch."]];
 document.getElementById('steps').innerHTML=steps.map(s=>`<div class="reveal"><div class="tile glass ${s[1]}"><div class="top"><span class="emoji">${s[2]}</span><span class="num">${s[0]}</span></div><h3>${s[3]}</h3><p>${s[4]}</p></div></div>`).join('');
 
-const bens=[["⚡","#14b8a6,#0f766e","Less admin for negotiators","No sitting at a dashboard writing posts. Fire off a note and move on to the next viewing."],
-["🚀","#fb7185,#fb923c","Faster listing launches","New instructions go from message to market-ready content in minutes, not days."],
-["🎯","#fbbf24,#fb923c","Consistent branch content","Every post sounds like your brand, across every agent and every channel."],
-["✅","#14b8a6,#0f766e","Approval trail before posting","Nothing goes live without a tap. Keep a clear record of what was approved and when."],
-["💬","#fb7185,#f43f5e","Works from tools you use","It all happens in WhatsApp. No new logins, no training, no change to the routine."],
-["📈","#fbbf24,#fb7185","More posts, less effort","Keep your branch active on social without anyone having to find the time to do it."]];
+const bens=[["⚡","#14b8a6,#0f766e","Less admin for negotiators","No dashboard to sit at. Send a note and get on with your next viewing."],
+["🚀","#fb7185,#fb923c","Faster listing launches","New instructions go from message to market in minutes, not days."],
+["🎯","#fbbf24,#fb923c","Consistent branch content","Every post sounds like your brand, whoever sent the note."],
+["👍","#14b8a6,#0f766e","You stay in control","Nothing posts until you say so. One tap, and there is a clear record of what went out."],
+["💬","#fb7185,#f43f5e","Nothing new to learn","It all happens in WhatsApp. No new logins, no training, no change to your day."],
+["🗂️","#fbbf24,#fb7185","Your CRM updates itself","Records and pipeline fill in from the same note. You never type the same thing twice."]];
 document.getElementById('bens').innerHTML=bens.map(b=>`<div class="reveal"><div class="ben glass"><span class="ic" style="background:linear-gradient(135deg,${b[1]})">${b[0]}</span><h3>${b[2]}</h3><p>${b[3]}</p></div></div>`).join('');
 
-const tiers=[["Starter Pilot","For a single negotiator testing the workflow",false,["One agent, one WhatsApp line","Listing copy + social captions","Approval messages before posting","Facebook & Instagram publishing"]],
-["Branch","For a whole office working as one team",true,["Everything in Starter Pilot","Multiple agents, shared branch voice","Consistent branch social content","Approval trail for every post","Priority onboarding & support"]],
-["Multi-Branch","For groups managing several offices",false,["Everything in Branch","Per-branch voice & channels","Group-wide reporting","Centralised approval controls","Dedicated account manager"]]];
-document.getElementById('tiers').innerHTML=tiers.map(t=>`<div class="reveal" style="height:100%"><div class="tier ${t[2]?'glass-strong feat':'glass'}">${t[2]?'<span class="badge">Most popular</span>':''}<h3>${t[0]}</h3><p class="who">${t[1]}</p><div class="price">Pilot pricing</div><div class="pnote">available on request</div><ul>${t[3].map(f=>`<li><span class="ck">${CHECK}</span><span>${f}</span></li>`).join('')}</ul><a href="#book" class="btn ${t[2]?'btn-primary':'btn-outline'} btn-md btn-block">Book a pilot</a></div></div>`).join('');
+const FAQS=[["Do I have to write anything myself?","No. You send the note, Listing Launchpad writes the posts and fills the CRM. You give it a quick read and a yes."],
+["Will it post without me seeing it?","Never. Nothing goes live until you reply yes in WhatsApp."],
+["Does it work with my CRM?","We build the connection around your CRM on a short setup call. Tell us which one you use and we'll confirm the fit."],
+["Is there anything to install?","No. It runs inside WhatsApp. No new apps, no logins, no training for the team."],
+["What does it cost?","Social is self-serve at the price shown above. CRM connectivity is custom and starts with a call."],
+["Can I cancel any time?","Yes. There is no long contract on the Social plan."]];
+document.getElementById('faqList').innerHTML=FAQS.map((f,i)=>`<div class="faq-item glass${i===0?' open':''}"><button class="faq-q" aria-expanded="${i===0}"><span>${f[0]}</span><span class="faq-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><p>${f[1]}</p></div></div>`).join('');
+document.querySelectorAll('.faq-item').forEach(item=>{item.querySelector('.faq-q').onclick=()=>{const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(x=>{x.classList.remove('open');x.querySelector('.faq-q').setAttribute('aria-expanded','false')});if(!wasOpen){item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true')}};});
 
 document.getElementById('yr').textContent=new Date().getFullYear();
 
-/* ---------- nav / scroll / reveal ---------- */
+/* currency */
+const CURRENCIES={GBP:{symbol:"£",social:335},USD:{symbol:"$",social:450},EUR:{symbol:"€",social:390},AUD:{symbol:"A$",social:675},CAD:{symbol:"C$",social:625}};
+const CUR_ORDER=["GBP","USD","EUR","AUD","CAD"];
+let curCode="GBP";
+try{const s=localStorage.getItem("ll-currency");if(s&&CURRENCIES[s])curCode=s;}catch(e){}
+const curWrap=document.getElementById('cur'),curBtn=document.getElementById('curBtn'),curMenu=document.getElementById('curMenu');
+curMenu.innerHTML=CUR_ORDER.map(c=>`<button data-c="${c}"><span class="fl">${flag(c)}</span>${c}</button>`).join('');
+function applyCurrency(){const c=CURRENCIES[curCode];document.getElementById('socialPrice').textContent=c.symbol+c.social;document.getElementById('curFlag').innerHTML=flag(curCode);document.getElementById('curCode').textContent=curCode;curMenu.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.c===curCode));try{localStorage.setItem("ll-currency",curCode);}catch(e){}}
+curBtn.onclick=(e)=>{e.stopPropagation();curWrap.classList.toggle('open');curBtn.setAttribute('aria-expanded',curWrap.classList.contains('open'));};
+curMenu.querySelectorAll('button').forEach(b=>b.onclick=()=>{curCode=b.dataset.c;applyCurrency();curWrap.classList.remove('open');});
+document.addEventListener('click',(e)=>{if(!curWrap.contains(e.target))curWrap.classList.remove('open');});
+applyCurrency();
+
+/* Stripe Payment Links (static build, no backend). Paste a recurring link per currency.
+   While blank, the Subscribe button routes to the contact section. The React + Vercel build uses hosted Checkout (see STRIPE_SETUP.md). */
+const STRIPE_PAYMENT_LINKS={GBP:"",USD:"",EUR:"",AUD:"",CAD:""};
+document.getElementById('socialCta').onclick=function(){var u=STRIPE_PAYMENT_LINKS[curCode];if(u){window.location.href=u;}else{window.location.hash='#book';}};
+
+/* nav / reveal / video / form */
 const navInner=document.getElementById('navInner');
 addEventListener('scroll',()=>navInner.classList.toggle('scrolled',scrollY>24),{passive:true});
-document.getElementById('burger').onclick=()=>{document.querySelector('.nav-links').style.display='flex';document.querySelector('.nav-links').style.cssText='display:flex;position:absolute;top:64px;left:12px;right:12px;flex-direction:column;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border-radius:20px;padding:10px;box-shadow:0 10px 40px -12px rgba(13,43,43,.18)'};
-const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.18});
+document.getElementById('burger').onclick=()=>{const n=document.querySelector('.nav-links');n.style.cssText='display:flex;position:absolute;top:64px;left:12px;right:12px;flex-direction:column;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border-radius:20px;padding:10px;box-shadow:0 10px 40px -12px rgba(13,43,43,.18)';};
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-/* video */
 document.getElementById('vplay').onclick=function(){const v=document.getElementById('vid');v.play();v.setAttribute('controls','');this.style.display='none'};
-document.getElementById('leadForm').onsubmit=function(e){e.preventDefault();
-  /* TODO connect lead capture: Calendly / Formspree / wa.me */
-  this.innerHTML='<div class="full" style="display:flex;align-items:center;gap:12px;justify-content:center;color:#0d2b2b;background:rgba(255,255,255,.9);padding:14px;border-radius:16px"><span style="width:34px;height:34px;border-radius:999px;background:#0f766e;color:#fff;display:grid;place-items:center">'+CHECK+'</span><b>You&rsquo;re on the list! We&rsquo;ll be in touch to set up your pilot.</b></div>'};
+document.getElementById('leadForm').onsubmit=function(e){e.preventDefault();this.innerHTML='<div class="full" style="display:flex;align-items:center;gap:12px;justify-content:center;color:#0d2b2b;background:rgba(255,255,255,.9);padding:14px;border-radius:16px"><span style="width:34px;height:34px;border-radius:999px;background:#0f766e;color:#fff;display:grid;place-items:center">'+CHECK+'</span><b>Thanks, we&rsquo;ve got it. We&rsquo;ll be in touch to book your call.</b></div>'};
 
-/* ---------- interactive demo ---------- */
+/* unified demo */
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let cur=0,timers=[];
 const chat=document.getElementById('chat'),out=document.getElementById('out'),sw=document.getElementById('switcher');
 sw.innerHTML=PROPS.map((p,i)=>`<button class="chip" data-i="${i}">${p.loc.split(',')[0]}</button>`).join('');
-sw.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{select(+c.dataset.i)});
+sw.querySelectorAll('.chip').forEach(c=>c.onclick=()=>select(+c.dataset.i));
 function clearT(){timers.forEach(clearTimeout);timers=[]}
-function wave(active){let s='';for(let i=0;i<24;i++){s+=`<i style="height:${7+(i*7)%14}px;animation-delay:${(i%6)*0.08}s;${active?'':'animation:none'}"></i>`}return s}
+function wave(active){let s='';for(let i=0;i<22;i++){s+=`<i style="height:${7+(i*7)%13}px;animation-delay:${(i%6)*0.08}s;${active?'':'animation:none'}"></i>`}return s}
 function renderChat(p,stage){
   let h=`<div class="bub"><div class="ph">${house(p.pal)}</div><div class="txt">${p.note}</div><div class="tm">9:41 am</div></div>
   <div class="bub voice"><span class="pl">${PLAY}</span><span class="wave">${wave(stage==='idle')}</span><span style="font-size:.6rem;color:var(--mist)">${p.voice}</span></div>`;
   if(stage==='thinking')h+=`<div class="bub typing"><i></i><i style="animation-delay:.2s"></i><i style="animation-delay:.4s"></i></div>`;
-  if(stage==='posting'||stage==='done')h+=`<div class="bub"><div class="txt"><b style="color:var(--teal-deep)">✦ Ready to approve</b><br>Your Facebook &amp; Instagram posts are drafted. Reply <b>YES</b> to publish, or tell me what to change.</div></div>`;
-  if(stage==='done')h+=`<div class="bub out"><div class="txt">YES — publish ✅</div><div class="tm">9:42 am ✓✓</div></div>`;
+  if(stage==='done'){h+=`<div class="bub"><div class="txt"><b style="color:var(--teal-deep)">✦ Record ${p.ref} and posts ready</b><br>Reply <b>YES</b> to publish the posts and save to your CRM.</div></div>`;
+    h+=`<div class="bub out"><div class="txt">YES, publish and save ✅</div><div class="tm">9:42 am ✓✓</div></div>`;}
   chat.innerHTML=h;
   requestAnimationFrame(()=>{chat.scrollTop=chat.scrollHeight});
 }
-function idle(p){out.innerHTML=`<div class="idle glass"><div class="sp">${SPARK}</div><h3>Watch the magic happen</h3><p>That's the whole input on the left — a quick note, a photo, a voice message. Hit the button and watch it become publish-ready content.</p><button class="btn btn-primary btn-lg" id="gen">${SPARK} Generate the posts</button><p style="font-size:.78rem;color:var(--mist);margin-top:1rem">No sign-up · instant preview</p></div>`;
+function idle(){out.innerHTML=`<div class="idle glass"><div class="sp">${SPARK}</div><h3>One note. Everything done.</h3><p>Hit the button. Watch one WhatsApp note turn into finished social posts and a complete CRM record, at the same time.</p><button class="btn btn-primary btn-lg" id="gen">${SPARK} Generate everything</button><p style="font-size:.78rem;color:var(--mist);margin-top:1rem">No sign-up, instant preview</p></div>`;
   document.getElementById('gen').onclick=run;}
-function copySpans(t){return t.split(' ').map((w,i)=>`<span style="animation-delay:${i*0.025}s">${w} </span>`).join('')}
 function render(p,stage){
   renderChat(p,stage);
-  if(stage==='idle'){idle(p);return}
-  const done=stage==='done';
-  let h=`<div class="status glass ${done?'done':''}"><span class="ic">${done?CHECK:'<span class="spin">'+SPARK+'</span>'}</span><div style="flex:1"><div class="ttl">${stage==='thinking'?'Reading the note, photo &amp; voice message…':stage==='writing'?'Writing your listing copy…':stage==='posting'?'Designing the social posts…':'Published to Facebook &amp; Instagram'}</div><div class="meta">${p.price} · ${p.loc}</div></div>${done?'<button class="btn btn-ghost btn-sm" id="replay">Replay</button>':''}</div>`;
-  if(stage!=='thinking'){
-    h+=`<div class="card-copy glass"><div class="lab"><span class="eyebrow" style="padding:.2rem .55rem;font-size:.62rem">Listing description</span><span class="small">${p.beds} bed · ${p.baths} bath</span></div><p class="copy-text">${reduced?p.listing:copySpans(p.listing)}</p></div>`;
+  if(stage==='idle'){idle();return}
+  const showCrm=stage==='crm'||stage==='posts'||stage==='done';
+  const showPosts=stage==='posts'||stage==='done';
+  const done=stage==='done',activePipe=done?1:0;
+  const stext=stage==='thinking'?'Reading the note, photo and voice...':stage==='crm'?'Creating the property record...':stage==='posts'?'Writing the listing and social posts...':'Saved to CRM and posted to social';
+  let h=`<div class="status glass ${done?'done':''}"><span class="ic">${done?CHECK:'<span class="spin">'+SPARK+'</span>'}</span><div style="margin-right:auto"><div class="ttl">${stext}</div><div class="meta">${p.loc}</div></div><div class="checks"><span class="chk ${showCrm?'on':''}"><span class="b">${showCrm?CHECK:''}</span>CRM record</span><span class="chk ${showPosts?'on':''}"><span class="b">${showPosts?CHECK:''}</span>Social posts</span></div>${done?'<button class="btn btn-ghost btn-sm" id="replay">Replay</button>':''}</div>`;
+  if(showCrm){
+    const fields=[["Reference",p.ref],["Type",p.ptype],["Price",p.price],["Bedrooms",p.beds],["Bathrooms",p.baths],["Vendor",p.vendor]];
+    h+=`<div class="crm-card glass" style="margin-top:1rem">
+      <div class="crm-head"><span class="av">${house(p.pal)}</span><div style="min-width:0"><div class="nm">${p.loc}</div><div class="sub">CRM record · ${p.ref}</div></div><span class="new">New</span></div>
+      <div class="pipe"><div class="lab">Pipeline</div><div class="steps">${PIPELINE.map((s,i)=>`<div class="step ${i<=activePipe?'on':''}"><div class="bar"><i style="transition-delay:${i*0.15}s"></i></div><div class="nm">${s}</div></div>`).join('')}</div></div>
+      <div class="crm-fields">${fields.map((f,i)=>`<div class="frow" style="animation-delay:${i*0.08}s"><span class="k">${f[0]}</span><span class="v">${f[1]}</span></div>`).join('')}
+        <div class="crm-feats frow" style="animation-delay:${fields.length*0.08}s;border:none"><div style="width:100%"><div class="k">Key features</div><div class="tagpills">${p.feats.map(x=>`<span>${x}</span>`).join('')}</div></div></div>
+      </div>
+    </div>`;
   }
-  if(stage==='posting'||stage==='done'){
-    h+=`<div class="socials">
-      <div class="post" style="animation-delay:0s"><div class="ph"><span class="av" style="background:#1877F2">${FB}</span><div><div class="nm">Your Agency</div><div class="meta">Sponsored · 🌐</div></div></div><div class="body">${p.fb}</div><div class="pic">${house(p.pal)}</div><div class="row"><span>👍 ❤️ 128</span><span>24 comments · 12 shares</span></div></div>
-      <div class="post ig" style="animation-delay:.18s"><div class="ph"><span class="av" style="background:linear-gradient(45deg,#fbbf24,#fb7185,#c026d3)">${IG}</span><div class="nm">youragency</div><span style="margin-left:auto;color:var(--mist)">···</span></div><div class="pic">${house(p.pal)}</div><div class="row">${HEART}<span>2,481 likes</span></div><div class="body">${p.ig} <span class="tags">${p.tags}</span></div></div>
+  if(showPosts){
+    h+=`<div class="socials" style="margin-top:1rem">
+      <div class="post"><div class="ph"><span class="av" style="background:#1877F2">${FB}</span><div><div class="nm">Your Agency</div><div class="meta">Sponsored · 🌐</div></div></div><div class="body">${p.fb}</div><div class="pic">${house(p.pal)}</div><div class="row"><span>👍 ❤️ 128</span><span>24 comments · 12 shares</span></div></div>
+      <div class="post ig"><div class="ph"><span class="av" style="background:linear-gradient(45deg,#fbbf24,#fb7185,#c026d3)">${IG}</span><div class="nm">youragency</div><span style="margin-left:auto;color:var(--mist)">···</span></div><div class="pic">${house(p.pal)}</div><div class="row">${HEART}<span>2,481 likes</span></div><div class="body">${p.ig} <span class="tags">${p.tags}</span></div></div>
     </div>`;
   }
   out.innerHTML=h;
   const rp=document.getElementById('replay');if(rp)rp.onclick=()=>select(cur);
 }
 function run(){clearT();const p=PROPS[cur];render(p,'thinking');
-  timers.push(setTimeout(()=>render(p,'writing'),reduced?150:1200));
-  timers.push(setTimeout(()=>render(p,'posting'),reduced?400:3400));
-  timers.push(setTimeout(()=>render(p,'done'),reduced?700:5200));}
+  timers.push(setTimeout(()=>render(p,'crm'),reduced?150:1100));
+  timers.push(setTimeout(()=>render(p,'posts'),reduced?400:2800));
+  timers.push(setTimeout(()=>render(p,'done'),reduced?700:4700));}
 function select(i){clearT();cur=i;sw.querySelectorAll('.chip').forEach((c,j)=>c.classList.toggle('on',j===i));render(PROPS[i],'idle')}
 select(0);
-
-/* ---------- CRM demo ---------- */
-const DB='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>';
-let ccur=0,ctimers=[];
-const cChat=document.getElementById('crmChat'),cOut=document.getElementById('crmOut'),cSw=document.getElementById('crmSwitcher');
-cSw.innerHTML=PROPS.map((p,i)=>`<button class="chip" data-i="${i}">${p.loc.split(',')[0]}</button>`).join('');
-cSw.querySelectorAll('.chip').forEach(c=>c.onclick=()=>cselect(+c.dataset.i));
-function cclearT(){ctimers.forEach(clearTimeout);ctimers=[]}
-function crmChatRender(p,stage){
-  let h=`<div class="bub"><div class="ph">${house(p.pal)}</div><div class="txt">${p.note}</div><div class="tm">9:41 am</div></div>
-  <div class="bub voice"><span class="pl">${PLAY}</span><span class="wave">${wave(stage==='idle')}</span><span style="font-size:.6rem;color:var(--mist)">${p.voice}</span></div>`;
-  if(stage==='thinking')h+=`<div class="bub typing"><i></i><i style="animation-delay:.2s"></i><i style="animation-delay:.4s"></i></div>`;
-  if(stage==='done')h+=`<div class="bub"><div class="txt"><b style="color:var(--teal-deep)">✦ Saved to your CRM</b><br>Record <b>${p.ref}</b> created and your pipeline updated. No double entry.</div></div>`;
-  cChat.innerHTML=h;
-  requestAnimationFrame(()=>{cChat.scrollTop=cChat.scrollHeight});
-}
-function cidle(p){cOut.innerHTML=`<div class="idle glass"><div class="sp">${DB}</div><h3>Watch your CRM fill itself</h3><p>The very same note. This time it creates the property record and moves your pipeline along — no forms, no copy-paste.</p><button class="btn btn-primary btn-lg" id="cgen">${SPARK} Create the record</button><p style="font-size:.78rem;color:var(--mist);margin-top:1rem">No sign-up · instant preview</p></div>`;
-  document.getElementById('cgen').onclick=crun;}
-function crender(p,stage){
-  crmChatRender(p,stage);
-  if(stage==='idle'){cidle(p);return}
-  const done=stage==='done',activeStage=done?1:0;
-  let h=`<div class="status glass ${done?'done':''}"><span class="ic">${done?CHECK:'<span class="spin">'+SPARK+'</span>'}</span><div style="flex:1"><div class="ttl">${stage==='thinking'?'Reading the note, photo &amp; voice message…':stage==='filling'?'Creating the property record…':'Synced to your CRM'}</div><div class="meta">${p.loc}</div></div>${done?'<button class="btn btn-ghost btn-sm" id="creplay">Replay</button>':''}</div>`;
-  if(stage==='filling'||stage==='done'){
-    const fields=[["Reference",p.ref],["Property type",p.ptype],["Asking price",p.price],["Bedrooms",p.beds],["Bathrooms",p.baths],["Vendor",p.vendor],["Vendor contact",p.vphone]];
-    h+=`<div class="crm-card glass">
-      <div class="crm-head"><span class="av">${house(p.pal)}</span><div style="min-width:0"><div class="nm">${p.loc}</div><div class="sub">Property record · ${p.ref}</div></div><span class="new">New</span></div>
-      <div class="pipe"><div class="lab">Pipeline</div><div class="steps">${PIPELINE.map((s,i)=>`<div class="step ${i<=activeStage?'on':''}"><div class="bar"><i style="transition-delay:${i*0.15}s"></i></div><div class="nm">${s}</div></div>`).join('')}</div></div>
-      <div class="crm-fields">${fields.map((f,i)=>`<div class="frow" style="animation-delay:${i*0.1}s"><span class="k">${f[0]}</span><span class="v">${f[1]}</span></div>`).join('')}
-        <div class="crm-feats frow" style="animation-delay:${fields.length*0.1}s;border:none"><div style="width:100%"><div class="k">Key features</div><div class="tagpills">${p.feats.map(x=>`<span>${x}</span>`).join('')}</div></div></div>
-      </div>
-      ${done?`<div class="crm-foot"><span class="ck">${CHECK}</span><p>Saved &amp; synced · ${p.ref} added to your pipeline</p></div>`:''}
-    </div>`;
-  }
-  cOut.innerHTML=h;
-  const rp=document.getElementById('creplay');if(rp)rp.onclick=()=>cselect(ccur);
-}
-function crun(){cclearT();const p=PROPS[ccur];crender(p,'thinking');
-  ctimers.push(setTimeout(()=>crender(p,'filling'),reduced?150:1100));
-  ctimers.push(setTimeout(()=>crender(p,'done'),reduced?500:3600));}
-function cselect(i){cclearT();ccur=i;cSw.querySelectorAll('.chip').forEach((c,j)=>c.classList.toggle('on',j===i));crender(PROPS[i],'idle')}
-cselect(0);
 </script>
 </body>
 </html>
