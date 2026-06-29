@@ -452,7 +452,7 @@ footer{padding:2.5rem 0}
       <div class="tier glass">
         <h3>Social</h3>
         <p class="who">Hands-free posting from WhatsApp. You set it up in minutes.</p>
-        <div class="price"><span id="socialPrice">£300</span><span style="font-size:1.1rem;color:var(--mist)">/mo</span></div>
+        <div class="price"><span id="socialPrice">£335</span><span style="font-size:1.1rem;color:var(--mist)">/mo</span></div>
         <div class="pnote">Includes 3 seats, then £35 per extra seat</div>
         <ul>
           <li><span class="ck">✓</span><span>Listing copy and social captions</span></li>
@@ -597,7 +597,7 @@ document.querySelectorAll('.faq-item').forEach(item=>{item.querySelector('.faq-q
 document.getElementById('yr').textContent=new Date().getFullYear();
 
 /* currency */
-const CURRENCIES={GBP:{symbol:"£",social:300},USD:{symbol:"$",social:400},EUR:{symbol:"€",social:350},AUD:{symbol:"A$",social:600},CAD:{symbol:"C$",social:550}};
+const CURRENCIES={GBP:{symbol:"£",social:335},USD:{symbol:"$",social:450},EUR:{symbol:"€",social:390},AUD:{symbol:"A$",social:675},CAD:{symbol:"C$",social:625}};
 const CUR_ORDER=["GBP","USD","EUR","AUD","CAD"];
 let curCode="GBP";
 try{const s=localStorage.getItem("ll-currency");if(s&&CURRENCIES[s])curCode=s;}catch(e){}
