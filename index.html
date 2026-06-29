@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Listing Launchpad | Your CRM and socials from one WhatsApp note</title>
+<title>Listing Launchpad | WhatsApp notes into Instagram-ready listings</title>
 <meta name="description" content="Listing Launchpad turns WhatsApp notes, photos and voice notes from estate agents into listing copy and ready-to-post content for Facebook and Instagram." />
 <meta name="theme-color" content="#14B8A6" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -140,8 +140,8 @@ section{position:relative}
 .tier li .ck{margin-top:1px;width:20px;height:20px;border-radius:999px;background:var(--teal);color:#fff;display:grid;place-items:center;flex:none}
 
 /* video */
-.vframe{position:relative;max-width:880px;margin:0 auto;border-radius:2.75rem;padding:.7rem;box-shadow:0 30px 70px -30px rgba(13,43,43,.35)}
-.vframe .inner{position:relative;border-radius:2rem;overflow:hidden;aspect-ratio:16/9;background:var(--ink)}
+.vframe{position:relative;max-width:540px;margin:0 auto;border-radius:2.75rem;padding:.7rem;box-shadow:0 30px 70px -30px rgba(13,43,43,.35)}
+.vframe .inner{position:relative;border-radius:2rem;overflow:hidden;aspect-ratio:1/1;background:var(--ink)}
 .vframe video{width:100%;height:100%;object-fit:cover}
 .vplay{position:absolute;inset:0;display:grid;place-items:center;border:none;background:rgba(13,43,43,.18);cursor:pointer}
 .vplay .ring{width:80px;height:80px;border-radius:999px;background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:0 0 0 1px rgba(20,184,166,.25),0 20px 60px -20px rgba(20,184,166,.55);transition:transform .25s}
@@ -279,10 +279,6 @@ footer{padding:2.5rem 0}
 }
 @media(max-width:560px){
   .g4,.g2,.socials,.cta-form{grid-template-columns:1fr}
-  .hero{padding-top:7rem}
-  .hero h1{font-size:clamp(2rem,9vw,2.45rem);line-height:1.08}
-  .hero .lead{font-size:1.03rem}
-  .cur{display:none}
 }
 @media(prefers-reduced-motion:reduce){
   .aurora-blob,.marquee-track,.idle .sp,.crm-attractor .arr{animation:none!important}
@@ -447,26 +443,26 @@ footer{padding:2.5rem 0}
 <!-- PRICING -->
 <section id="pricing" class="sec">
   <div class="wrap">
-    <div class="head"><span class="eyebrow">Pricing</span><h2>Two ways to get going</h2><p>Start on your own with Social, or connect your CRM for the full hands-free setup. Social starts with one branch and three sender seats.</p></div>
+    <div class="head"><span class="eyebrow">Pricing</span><h2>Two ways to get going</h2><p>Start self-serve with the base plan, or connect your CRM for the full hands-free setup. Prices are indicative; your plan is set at checkout in the app.</p></div>
     <div class="plans reveal">
       <div class="tier glass">
-        <h3>Social</h3>
-        <p class="who">Hands-free posting from WhatsApp. You set it up in minutes.</p>
+        <h3>Base plan</h3>
+        <p class="who">WhatsApp notes and photos into Instagram-ready listings. Set up in the app in minutes.</p>
         <div class="price"><span id="socialPrice">£335</span><span style="font-size:1.1rem;color:var(--mist)">/mo</span></div>
-        <div class="pnote">Includes 3 seats, then £35 per extra seat</div>
+        <div class="pnote">Includes 3 seats &middot; extra seats <span id="seatPrice">£35</span>/mo each</div>
         <ul>
-          <li><span class="ck">✓</span><span>Listing copy and social captions</span></li>
-          <li><span class="ck">✓</span><span>Posts written for every listing</span></li>
-          <li><span class="ck">✓</span><span>Publishes to Facebook and Instagram</span></li>
-          <li><span class="ck">✓</span><span>Unlimited properties</span></li>
-          <li><span class="ck">✓</span><span>Three sender seats included</span></li>
+          <li><span class="ck">✓</span><span>WhatsApp notes and photos in, listings out</span></li>
+          <li><span class="ck">✓</span><span>Polished, Instagram-ready posts</span></li>
+          <li><span class="ck">✓</span><span>Approve before anything posts</span></li>
+          <li><span class="ck">✓</span><span>Branch setup and staff invites in the app</span></li>
+          <li><span class="ck">✓</span><span>Add seats whenever you need them</span></li>
         </ul>
-        <button id="socialCta" class="btn btn-outline btn-md btn-block">Subscribe</button>
+        <button id="socialCta" class="btn btn-outline btn-md btn-block">Get started</button>
       </div>
       <div class="tier glass-strong feat">
         <span class="badge">Enterprise</span>
         <h3>CRM Connectivity</h3>
-        <p class="who">The full engine. Social posting plus a live, two-way link to your CRM.</p>
+        <p class="who">The full engine. Listings plus a live, two-way link to your CRM.</p>
         <div class="price">Let&rsquo;s talk</div>
         <div class="pnote">Custom pricing, includes a setup call</div>
         <ul>
@@ -523,6 +519,8 @@ footer{padding:2.5rem 0}
   <p class="foot-copy">Hands-free property marketing for busy estate agents. © <span id="yr"></span> Listing Launchpad. All rights reserved.</p>
 </footer>
 <script>
+const APP_BASE_URL="https://listing-launchpad-chi.vercel.app";
+const CHECKOUT_URL="https://listing-launchpad-chi.vercel.app/start";
 const PROPS=[
  {id:"willow",loc:"Willow Drive, Harrogate",price:"£625,000",beds:4,baths:2,pal:{sky:["#cdf6ee","#effcf9"],wall:"#fff",roof:"#0f766e",accent:"#14b8a6"},
   note:"New instruction. 4 bed detached on Willow Drive. Big open-plan kitchen, south garden, new boiler. £625k. Pics attached 📸",voice:"0:14",
@@ -597,19 +595,18 @@ document.querySelectorAll('.faq-item').forEach(item=>{item.querySelector('.faq-q
 document.getElementById('yr').textContent=new Date().getFullYear();
 
 /* currency */
-const CURRENCIES={GBP:{symbol:"£",social:335},USD:{symbol:"$",social:450},EUR:{symbol:"€",social:390},AUD:{symbol:"A$",social:675},CAD:{symbol:"C$",social:625}};
+const CURRENCIES={GBP:{symbol:"£",base:335,seat:35},USD:{symbol:"$",base:450,seat:45},EUR:{symbol:"€",base:390,seat:40},AUD:{symbol:"A$",base:675,seat:70},CAD:{symbol:"C$",base:625,seat:65}};
 const CUR_ORDER=["GBP","USD","EUR","AUD","CAD"];
 let curCode="GBP";
 try{const s=localStorage.getItem("ll-currency");if(s&&CURRENCIES[s])curCode=s;}catch(e){}
 const curWrap=document.getElementById('cur'),curBtn=document.getElementById('curBtn'),curMenu=document.getElementById('curMenu');
 curMenu.innerHTML=CUR_ORDER.map(c=>`<button data-c="${c}"><span class="fl">${flag(c)}</span>${c}</button>`).join('');
-function applyCurrency(){const c=CURRENCIES[curCode];document.getElementById('socialPrice').textContent=c.symbol+c.social;document.getElementById('curFlag').innerHTML=flag(curCode);document.getElementById('curCode').textContent=curCode;curMenu.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.c===curCode));try{localStorage.setItem("ll-currency",curCode);}catch(e){}}
+function applyCurrency(){const c=CURRENCIES[curCode];document.getElementById('socialPrice').textContent=c.symbol+c.base;var _sp=document.getElementById('seatPrice');if(_sp)_sp.textContent=c.symbol+c.seat;document.getElementById('curFlag').innerHTML=flag(curCode);document.getElementById('curCode').textContent=curCode;curMenu.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.c===curCode));try{localStorage.setItem("ll-currency",curCode);}catch(e){}}
 curBtn.onclick=(e)=>{e.stopPropagation();curWrap.classList.toggle('open');curBtn.setAttribute('aria-expanded',curWrap.classList.contains('open'));};
 curMenu.querySelectorAll('button').forEach(b=>b.onclick=()=>{curCode=b.dataset.c;applyCurrency();curWrap.classList.remove('open');});
 document.addEventListener('click',(e)=>{if(!curWrap.contains(e.target))curWrap.classList.remove('open');});
 applyCurrency();
 
-const CHECKOUT_URL="https://listing-launchpad-chi.vercel.app/start";
 document.getElementById('socialCta').onclick=function(){window.location.href=CHECKOUT_URL;};
 
 /* nav / reveal / video / form */
