@@ -447,19 +447,19 @@ footer{padding:2.5rem 0}
 <!-- PRICING -->
 <section id="pricing" class="sec">
   <div class="wrap">
-    <div class="head"><span class="eyebrow">Pricing</span><h2>Two ways to get going</h2><p>Start on your own with Social, or connect your CRM for the full hands-free setup. Prices show in the currency you pick.</p></div>
+    <div class="head"><span class="eyebrow">Pricing</span><h2>Two ways to get going</h2><p>Start on your own with Social, or connect your CRM for the full hands-free setup. Social starts with one branch and three sender seats.</p></div>
     <div class="plans reveal">
       <div class="tier glass">
         <h3>Social</h3>
         <p class="who">Hands-free posting from WhatsApp. You set it up in minutes.</p>
-        <div class="price"><span id="socialPrice">£335</span><span style="font-size:1.1rem;color:var(--mist)">/mo</span></div>
-        <div class="pnote">Self-serve setup</div>
+        <div class="price"><span id="socialPrice">£300</span><span style="font-size:1.1rem;color:var(--mist)">/mo</span></div>
+        <div class="pnote">Includes 3 seats, then £35 per extra seat</div>
         <ul>
           <li><span class="ck">✓</span><span>Listing copy and social captions</span></li>
           <li><span class="ck">✓</span><span>Posts written for every listing</span></li>
           <li><span class="ck">✓</span><span>Publishes to Facebook and Instagram</span></li>
-          <li><span class="ck">✓</span><span>Unlimited properties and agents</span></li>
-          <li><span class="ck">✓</span><span>Set up yourself, no call needed</span></li>
+          <li><span class="ck">✓</span><span>Unlimited properties</span></li>
+          <li><span class="ck">✓</span><span>Three sender seats included</span></li>
         </ul>
         <button id="socialCta" class="btn btn-outline btn-md btn-block">Subscribe</button>
       </div>
@@ -597,7 +597,7 @@ document.querySelectorAll('.faq-item').forEach(item=>{item.querySelector('.faq-q
 document.getElementById('yr').textContent=new Date().getFullYear();
 
 /* currency */
-const CURRENCIES={GBP:{symbol:"£",social:335},USD:{symbol:"$",social:450},EUR:{symbol:"€",social:390},AUD:{symbol:"A$",social:675},CAD:{symbol:"C$",social:625}};
+const CURRENCIES={GBP:{symbol:"£",social:300},USD:{symbol:"$",social:400},EUR:{symbol:"€",social:350},AUD:{symbol:"A$",social:600},CAD:{symbol:"C$",social:550}};
 const CUR_ORDER=["GBP","USD","EUR","AUD","CAD"];
 let curCode="GBP";
 try{const s=localStorage.getItem("ll-currency");if(s&&CURRENCIES[s])curCode=s;}catch(e){}
@@ -609,10 +609,8 @@ curMenu.querySelectorAll('button').forEach(b=>b.onclick=()=>{curCode=b.dataset.c
 document.addEventListener('click',(e)=>{if(!curWrap.contains(e.target))curWrap.classList.remove('open');});
 applyCurrency();
 
-/* Stripe Payment Links (static build, no backend). Paste a recurring link per currency.
-   While blank, the Subscribe button routes to the contact section. The React + Vercel build uses hosted Checkout (see STRIPE_SETUP.md). */
-const STRIPE_PAYMENT_LINKS={GBP:"",USD:"",EUR:"",AUD:"",CAD:""};
-document.getElementById('socialCta').onclick=function(){var u=STRIPE_PAYMENT_LINKS[curCode];if(u){window.location.href=u;}else{window.location.hash='#book';}};
+const CHECKOUT_URL="https://listing-launchpad-chi.vercel.app/start";
+document.getElementById('socialCta').onclick=function(){window.location.href=CHECKOUT_URL;};
 
 /* nav / reveal / video / form */
 const navInner=document.getElementById('navInner');
