@@ -520,7 +520,8 @@ footer{padding:2.5rem 0}
 </footer>
 <script>
 const APP_BASE_URL="https://listing-launchpad-chi.vercel.app";
-const CHECKOUT_URL="https://listing-launchpad-chi.vercel.app/start";
+let CHECKOUT_URL=APP_BASE_URL+"/start";
+const PUBLIC_CONFIG_URL=APP_BASE_URL+"/api/public-config";
 const PROPS=[
  {id:"willow",loc:"Willow Drive, Harrogate",price:"£625,000",beds:4,baths:2,pal:{sky:["#cdf6ee","#effcf9"],wall:"#fff",roof:"#0f766e",accent:"#14b8a6"},
   note:"New instruction. 4 bed detached on Willow Drive. Big open-plan kitchen, south garden, new boiler. £625k. Pics attached 📸",voice:"0:14",
@@ -596,9 +597,9 @@ document.getElementById('yr').textContent=new Date().getFullYear();
 
 /* currency */
 const CURRENCIES={GBP:{symbol:"£",base:335,seat:35},USD:{symbol:"$",base:450,seat:45},EUR:{symbol:"€",base:390,seat:40},AUD:{symbol:"A$",base:675,seat:70},CAD:{symbol:"C$",base:625,seat:65}};
-const CUR_ORDER=["GBP","USD","EUR","AUD","CAD"];
+const CUR_ORDER=["GBP"];
 let curCode="GBP";
-try{const s=localStorage.getItem("ll-currency");if(s&&CURRENCIES[s])curCode=s;}catch(e){}
+try{const s=localStorage.getItem("ll-currency");if(s&&CUR_ORDER.includes(s))curCode=s;}catch(e){}
 const curWrap=document.getElementById('cur'),curBtn=document.getElementById('curBtn'),curMenu=document.getElementById('curMenu');
 curMenu.innerHTML=CUR_ORDER.map(c=>`<button data-c="${c}"><span class="fl">${flag(c)}</span>${c}</button>`).join('');
 function applyCurrency(){const c=CURRENCIES[curCode];document.getElementById('socialPrice').textContent=c.symbol+c.base;var _sp=document.getElementById('seatPrice');if(_sp)_sp.textContent=c.symbol+c.seat;document.getElementById('curFlag').innerHTML=flag(curCode);document.getElementById('curCode').textContent=curCode;curMenu.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.c===curCode));try{localStorage.setItem("ll-currency",curCode);}catch(e){}}
@@ -606,6 +607,23 @@ curBtn.onclick=(e)=>{e.stopPropagation();curWrap.classList.toggle('open');curBtn
 curMenu.querySelectorAll('button').forEach(b=>b.onclick=()=>{curCode=b.dataset.c;applyCurrency();curWrap.classList.remove('open');});
 document.addEventListener('click',(e)=>{if(!curWrap.contains(e.target))curWrap.classList.remove('open');});
 applyCurrency();
+
+async function refreshPublicConfig(){
+  try{
+    const response=await fetch(PUBLIC_CONFIG_URL,{headers:{Accept:"application/json"}});
+    if(!response.ok)return;
+    const config=await response.json();
+    const checkout=new URL(config.checkoutUrl);
+    const app=new URL(APP_BASE_URL);
+    if(checkout.origin!==app.origin||checkout.pathname!=="/start")return;
+    if(config.currency!=="GBP"||!Number.isFinite(config.basePrice)||!Number.isFinite(config.extraSeatPrice))return;
+    CHECKOUT_URL=checkout.toString();
+    CURRENCIES.GBP.base=config.basePrice;
+    CURRENCIES.GBP.seat=config.extraSeatPrice;
+    applyCurrency();
+  }catch(e){}
+}
+refreshPublicConfig();
 
 document.getElementById('socialCta').onclick=function(){window.location.href=CHECKOUT_URL;};
 
