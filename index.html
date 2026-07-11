@@ -278,6 +278,8 @@ footer{padding:2.5rem 0}
   .out{min-height:auto}
 }
 @media(max-width:560px){
+  .underline-wrap{white-space:normal}
+  .underline-wrap svg{display:none}
   .g4,.g2,.socials,.cta-form{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){
@@ -497,12 +499,10 @@ footer{padding:2.5rem 0}
       <div style="position:relative">
         <h2>Want CRM connectivity? Let&rsquo;s talk.</h2>
         <p class="sub">Tell us which CRM you use and we&rsquo;ll show you the full hands-free setup on a short call. Just after the Social plan? You can start that yourself from the pricing above.</p>
-        <form class="cta-form glass-strong" id="leadForm">
-          <input required name="name" placeholder="Your name" aria-label="Your name">
-          <input required type="email" name="email" placeholder="Work email" aria-label="Work email">
-          <input class="full" name="crm" placeholder="Which CRM do you use? (optional)" aria-label="Which CRM do you use">
-          <button class="btn btn-coral btn-lg full" type="submit">Book a call</button>
-        </form>
+        <div class="cta-form glass-strong" id="contactActions">
+          <a class="btn btn-primary btn-lg full" href="#pricing">Start the Social plan</a>
+          <a class="btn btn-coral btn-lg full" href="tel:+447791258387">Call about CRM connectivity</a>
+        </div>
         <p class="cta-note">No hard sell. Just a look at how it would work for your branch.</p>
       </div>
     </div>
@@ -514,7 +514,7 @@ footer{padding:2.5rem 0}
   <div class="divider"></div>
   <div class="foot-row">
     <a href="#top" class="brand"><svg viewBox="0 0 64 64" width="34" height="34" style="display:block;border-radius:11px;box-shadow:0 0 0 1px rgba(20,184,166,.25)" aria-label="Listing Launchpad"><rect width="64" height="64" rx="16" fill="#14b8a6"/><path d="M32 7 L34 11 L38 13 L34 15 L32 19 L30 15 L26 13 L30 11 Z" fill="#fbbf24"/><path d="M14 39 L32 23 L50 39 V52 a3 3 0 0 1 -3 3 H36 V44 H28 V55 H17 a3 3 0 0 1 -3 -3 Z" fill="#fff"/></svg>Listing<span class="tgrad-warm">Launchpad</span></a>
-    <nav class="foot-nav"><a href="#demo">Try it</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="#book">Contact</a></nav>
+    <nav class="foot-nav"><a href="#demo">Try it</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="#book">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
   </div>
   <p class="foot-copy">Hands-free property marketing for busy estate agents. © <span id="yr"></span> Listing Launchpad. All rights reserved.</p>
 </footer>
@@ -634,7 +634,6 @@ document.getElementById('burger').onclick=()=>{const n=document.querySelector('.
 const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 document.getElementById('vplay').onclick=function(){const v=document.getElementById('vid');v.play();v.setAttribute('controls','');this.style.display='none'};
-document.getElementById('leadForm').onsubmit=function(e){e.preventDefault();this.innerHTML='<div class="full" style="display:flex;align-items:center;gap:12px;justify-content:center;color:#0d2b2b;background:rgba(255,255,255,.9);padding:14px;border-radius:16px"><span style="width:34px;height:34px;border-radius:999px;background:#0f766e;color:#fff;display:grid;place-items:center">'+CHECK+'</span><b>Thanks, we&rsquo;ve got it. We&rsquo;ll be in touch to book your call.</b></div>'};
 
 /* unified demo */
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;

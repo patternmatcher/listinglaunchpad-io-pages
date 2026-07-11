@@ -21,6 +21,9 @@ test("keeps the production pricing fallback", () => {
 
 test("contains the customer entry points", () => {
   assert.match(html, /id="socialCta"/);
-  assert.match(html, /id="leadForm"/);
+  assert.match(html, /id="contactActions"/);
+  assert.match(html, /href="tel:\+447791258387"/);
+  assert.match(html, /href="privacy\.html"/);
+  assert.match(html, /href="terms\.html"/);
   assert.match(html, /id="pricing"/);
 });
